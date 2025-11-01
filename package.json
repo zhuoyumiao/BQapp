@@ -1,0 +1,36 @@
+{
+  "name": "bqapp",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A Node + Express + Front-end rendering React with Hooks  + Mongo web app that helps users prepare for behavioral interviews",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuoyumiao/BQapp.git"
+  },
+  "author": "Muchen Qi & Zhuoyu Miao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhuoyumiao/BQapp/issues"
+  },
+  "homepage": "https://github.com/zhuoyumiao/BQapp#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.5.0"
+  }
+}
