@@ -1,0 +1,16 @@
+{
+  "name": "bqapp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Express + MongoDB (native driver) backend for BQapp",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0"
+  }
+}

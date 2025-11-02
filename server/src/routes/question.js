@@ -18,12 +18,9 @@ router.get("/", async (req, res, next) => {
 
     const query = {};
     if (q) {
-      query.$or = [
-        { $text: { $search: q } },
-        { title: { $regex: q, $options: "i" } },
-        { body: { $regex: q, $options: "i" } },
-      ];
+      query.$text = { $search: q };
     }
+
     if (tags)
       query.tags = {
         $in: String(tags)
@@ -67,27 +64,6 @@ router.get("/:id", async (req, res, next) => {
 });
 
 // add question
-router.post("/", async (req, res, next) => {
-  try {
-    const db = getDB();
-    const { title, body, tags = [] } = req.body || {};
-    if (!title || !body)
-      return res.status(400).json({ error: "title/body required" });
-    const now = new Date();
-    const doc = {
-      title,
-      body,
-      tags,
-      createdAt: now,
-      updatedAt: now,
-    };
-    const { insertedId } = await db.collection("questions").insertOne(doc);
-    res.status(201).json({ _id: insertedId, ...doc });
-  } catch (e) {
-    next(e);
-  }
-});
-
 router.post("/", async (req, res, next) => {
   try {
     const db = getDB();
