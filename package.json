@@ -1,0 +1,10 @@
+{
+  "name": "bqapp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:server": "cd server && npm run start",
+    "start:client": "cd client && npm run dev",
+    "start": "echo 'Run `npm run start:server` and `npm run start:client` in separate shells'"
+  }
+}

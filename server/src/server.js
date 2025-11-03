@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { connectDB } from "./db/connect.js";
 import questionsRouter from "./routes/question.js";
+import usersRouter from "./routes/users.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 
 app.use("/api/questions", questionsRouter);
+app.use("/api/v1/users", usersRouter);
 
 // 404 for API
 app.use("/api", (_req, res) => res.status(404).json({ error: "Not found" }));
