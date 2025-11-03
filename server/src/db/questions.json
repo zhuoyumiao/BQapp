@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "tags": ["conflict", "teamwork", "communication"],
+    "title": "Resolving conflict with a teammate",
+    "body": "Tell me about a time you had a conflict with a teammate."
+  },
+  {
+    "id": 2,
+    "tags": ["conflict", "stakeholder"],
+    "title": "Disagreement with stakeholder",
+    "body": "Describe a time when you disagreed with a stakeholder’s direction."
+  },
+  {
+    "id": 3,
+    "tags": ["conflict", "decision"],
+    "title": "Handling opposing opinions",
+    "body": "Tell me about a time when you had to make a decision despite conflicting opinions."
+  },
+  {
+    "id": 4,
+    "tags": ["conflict", "ownership"],
+    "title": "Resolving unclear ownership",
+    "body": "Share an example when unclear ownership caused issues and how you resolved it."
+  },
+  {
+    "id": 5,
+    "tags": ["conflict", "communication"],
+    "title": "Handling misunderstanding",
+    "body": "Describe a time when a misunderstanding caused problems. What did you do?"
+  },
+  {
+    "id": 6,
+    "tags": ["leadership", "teamwork"],
+    "title": "Leading without authority",
+    "body": "Describe a time you led a group without formal authority."
+  },
+  {
+    "id": 7,
+    "tags": ["leadership", "motivation"],
+    "title": "Motivating others",
+    "body": "Tell me about a time you motivated someone."
+  },
+  {
+    "id": 8,
+    "tags": ["leadership", "decision"],
+    "title": "Making tough decisions",
+    "body": "Describe a time you had to make a difficult decision and how you made it."
+  },
+  {
+    "id": 9,
+    "tags": ["leadership", "conflict"],
+    "title": "Handling poor performance",
+    "body": "Tell me about a time you dealt with a teammate who was not contributing enough."
+  },
+  {
+    "id": 10,
+    "tags": ["leadership", "ownership"],
+    "title": "Taking the lead unexpectedly",
+    "body": "Describe a situation when you unexpectedly had to take the lead."
+  },
+  {
+    "id": 11,
+    "tags": ["ownership", "initiative"],
+    "title": "Taking initiative",
+    "body": "Describe a time when you took initiative without being asked."
+  },
+  {
+    "id": 12,
+    "tags": ["ownership", "responsibility"],
+    "title": "Owning a mistake",
+    "body": "Tell me about a time you made a mistake and owned it."
+  },
+  {
+    "id": 13,
+    "tags": ["ownership", "process"],
+    "title": "Improving a process",
+    "body": "Describe a time when you identified and improved a broken process."
+  },
+  {
+    "id": 14,
+    "tags": ["ownership", "proactive"],
+    "title": "Preventing an issue",
+    "body": "Tell me about a time you proactively prevented a problem."
+  },
+  {
+    "id": 15,
+    "tags": ["ownership", "impact"],
+    "title": "Delivering beyond expectations",
+    "body": "Describe a time when you went beyond your responsibilities."
+  },
+  {
+    "id": 16,
+    "tags": ["pressure", "deadline"],
+    "title": "Tight deadlines",
+    "body": "Tell me about a time you worked under a tight deadline."
+  },
+  {
+    "id": 17,
+    "tags": ["pressure", "stress"],
+    "title": "Handling stress",
+    "body": "Describe a time when you handled extreme pressure."
+  },
+  {
+    "id": 18,
+    "tags": ["pressure", "multitasking"],
+    "title": "Managing multiple tasks",
+    "body": "Tell me about a time when you had to manage multiple priorities."
+  },
+  {
+    "id": 19,
+    "tags": ["pressure", "decision"],
+    "title": "Urgent decisions",
+    "body": "Describe a situation where you had to make a quick decision."
+  },
+  {
+    "id": 20,
+    "tags": ["pressure", "failure"],
+    "title": "Deadline miss",
+    "body": "Tell me about a time you missed a deadline. What did you learn?"
+  },
+  {
+    "id": 21,
+    "tags": ["learning", "challenge"],
+    "title": "Learning something new quickly",
+    "body": "Describe a time you had to learn something fast."
+  },
+  {
+    "id": 22,
+    "tags": ["learning", "feedback"],
+    "title": "Handling feedback",
+    "body": "Tell me about a time you received tough feedback. What did you do?"
+  },
+  {
+    "id": 23,
+    "tags": ["learning", "failure"],
+    "title": "Learning from failure",
+    "body": "Describe a time you failed and what you learned from it."
+  },
+  {
+    "id": 24,
+    "tags": ["learning", "growth"],
+    "title": "Learning a skill independently",
+    "body": "Tell me about a time you learned a new skill on your own."
+  },
+  {
+    "id": 25,
+    "tags": ["learning", "reflection"],
+    "title": "Changing your mind",
+    "body": "Describe a time when you changed your approach based on new information."
+  },
+  {
+    "id": 26,
+    "tags": ["motivation", "self-driven"],
+    "title": "Self-motivation",
+    "body": "Describe a time when you stayed motivated without external pressure."
+  },
+  {
+    "id": 27,
+    "tags": ["motivation", "effort"],
+    "title": "Pushing through difficulty",
+    "body": "Tell me about a time you pushed through a difficult situation."
+  },
+  {
+    "id": 28,
+    "tags": ["motivation", "goal"],
+    "title": "Working toward a goal",
+    "body": "Describe a time you set a goal and achieved it."
+  },
+  {
+    "id": 29,
+    "tags": ["motivation", "influence"],
+    "title": "Inspiring others",
+    "body": "Tell me about a time you inspired someone to take action."
+  },
+  {
+    "id": 30,
+    "tags": ["motivation", "persistence"],
+    "title": "Persistence",
+    "body": "Describe a time when persistence helped you succeed."
+  },
+  {
+    "id": 31,
+    "tags": ["communication", "clarity"],
+    "title": "Explaining complex ideas",
+    "body": "Tell me about a time you had to explain a complex topic to someone."
+  },
+  {
+    "id": 32,
+    "tags": ["communication", "feedback"],
+    "title": "Giving feedback",
+    "body": "Describe a time you gave constructive feedback."
+  },
+  {
+    "id": 33,
+    "tags": ["communication", "miscommunication"],
+    "title": "Fixing miscommunication",
+    "body": "Tell me about a time miscommunication caused an issue and how you resolved it."
+  },
+  {
+    "id": 34,
+    "tags": ["communication", "influence"],
+    "title": "Persuasion",
+    "body": "Describe a situation where you had to persuade others."
+  },
+  {
+    "id": 35,
+    "tags": ["communication", "listening"],
+    "title": "Listening actively",
+    "body": "Tell me about a time listening carefully changed the outcome."
+  },
+  {
+    "id": 36,
+    "tags": ["teamwork", "collaboration"],
+    "title": "Collaboration",
+    "body": "Describe a time when collaboration made a project successful."
+  },
+  {
+    "id": 37,
+    "tags": ["teamwork", "help"],
+    "title": "Supporting others",
+    "body": "Tell me about a time you helped someone succeed."
+  },
+  {
+    "id": 38,
+    "tags": ["teamwork", "trust"],
+    "title": "Building trust",
+    "body": "Describe a time you built trust with someone new."
+  },
+  {
+    "id": 39,
+    "tags": ["teamwork", "role"],
+    "title": "Adapting your role",
+    "body": "Tell me about a time when you had to adapt to a new role in a team."
+  },
+  {
+    "id": 40,
+    "tags": ["teamwork", "balance"],
+    "title": "Balancing responsibilities",
+    "body": "Describe a time when you balanced conflicting responsibilities."
+  },
+  {
+    "id": 41,
+    "tags": ["problem-solving", "analysis"],
+    "title": "Solving complex problem",
+    "body": "Tell me about a difficult problem you solved."
+  },
+  {
+    "id": 42,
+    "tags": ["problem-solving", "data"],
+    "title": "Using data",
+    "body": "Describe a time you used data to make a decision."
+  },
+  {
+    "id": 43,
+    "tags": ["problem-solving", "root-cause"],
+    "title": "Root cause analysis",
+    "body": "Tell me about a time you identified the root cause of an issue."
+  },
+  {
+    "id": 44,
+    "tags": ["problem-solving", "innovation"],
+    "title": "Creative solution",
+    "body": "Describe a time when you proposed a creative solution."
+  },
+  {
+    "id": 45,
+    "tags": ["problem-solving", "tradeoff"],
+    "title": "Making trade-offs",
+    "body": "Tell me about a time you had to make trade-offs to solve a problem."
+  },
+  {
+    "id": 46,
+    "tags": ["decision", "risk"],
+    "title": "Taking risks",
+    "body": "Tell me about a time you made a risky decision."
+  },
+  {
+    "id": 47,
+    "tags": ["decision", "data"],
+    "title": "Decision with limited data",
+    "body": "Describe a situation when you made a decision with limited information."
+  },
+  {
+    "id": 48,
+    "tags": ["decision", "priority"],
+    "title": "Prioritization",
+    "body": "Tell me how you prioritize tasks when everything feels important."
+  },
+  {
+    "id": 49,
+    "tags": ["decision", "impact"],
+    "title": "Impactful decision",
+    "body": "Describe a decision you made that had a major impact."
+  },
+  {
+    "id": 50,
+    "tags": ["decision", "ownership"],
+    "title": "Decision ownership",
+    "body": "Tell me about a time you took responsibility for a decision."
+  },
+  {
+    "id": 51,
+    "tags": ["failure", "self-awareness"],
+    "title": "Failure & reflection",
+    "body": "Describe a time you failed. What did you learn?"
+  },
+  {
+    "id": 52,
+    "tags": ["failure", "ownership"],
+    "title": "Recovering from failure",
+    "body": "Tell me about a time you bounced back from a failure."
+  },
+  {
+    "id": 53,
+    "tags": ["failure", "improvement"],
+    "title": "Handling negative outcome",
+    "body": "Describe a time your work received negative feedback."
+  },
+  {
+    "id": 54,
+    "tags": ["failure", "team"],
+    "title": "Team failure",
+    "body": "Tell me about a time your team failed."
+  },
+  {
+    "id": 55,
+    "tags": ["failure", "communication"],
+    "title": "Delivering bad news",
+    "body": "Describe a time you had to deliver bad news to someone."
+  },
+  {
+    "id": 56,
+    "tags": ["adaptability", "change"],
+    "title": "Adapting to change",
+    "body": "Describe a time when plans changed suddenly."
+  },
+  {
+    "id": 57,
+    "tags": ["adaptability", "ambiguous"],
+    "title": "Ambiguous situation",
+    "body": "Tell me about a time when you faced an ambiguous situation."
+  },
+  {
+    "id": 58,
+    "tags": ["adaptability", "resource"],
+    "title": "Limited resources",
+    "body": "Describe a time you achieved results with limited resources."
+  },
+  {
+    "id": 59,
+    "tags": ["adaptability", "learning"],
+    "title": "Adjusting strategy",
+    "body": "Tell me about a time you adjusted your strategy based on new data."
+  },
+  {
+    "id": 60,
+    "tags": ["adaptability", "priority"],
+    "title": "Rapid priority shift",
+    "body": "Describe a time your priorities changed suddenly."
+  },
+  {
+    "id": 61,
+    "tags": ["initiative", "process"],
+    "title": "Fixing inefficiency",
+    "body": "Tell me about a time you identified an inefficiency and fixed it."
+  },
+  {
+    "id": 62,
+    "tags": ["initiative", "automation"],
+    "title": "Automating work",
+    "body": "Describe a time you automated a task to improve efficiency."
+  },
+  {
+    "id": 63,
+    "tags": ["initiative", "improvement"],
+    "title": "Improving experience",
+    "body": "Tell me about a time you improved someone's experience."
+  },
+  {
+    "id": 64,
+    "tags": ["initiative", "self-driven"],
+    "title": "Starting something new",
+    "body": "Describe a time when you started something from scratch."
+  },
+  {
+    "id": 65,
+    "tags": ["initiative", "curiosity"],
+    "title": "Exploring curiosity",
+    "body": "Tell me about something you explored out of curiosity."
+  },
+  {
+    "id": 66,
+    "tags": ["ownership", "deadline"],
+    "title": "Owning delivery",
+    "body": "Describe a time when you owned delivery end-to-end."
+  },
+  {
+    "id": 67,
+    "tags": ["ownership", "handoff"],
+    "title": "Taking responsibility",
+    "body": "Tell me about a time you took responsibility beyond expectation."
+  },
+  {
+    "id": 68,
+    "tags": ["ownership", "detail"],
+    "title": "Attention to detail",
+    "body": "Describe a time your attention to detail made a difference."
+  },
+  {
+    "id": 69,
+    "tags": ["ownership", "follow-through"],
+    "title": "Following through",
+    "body": "Tell me about a time when you followed through on a commitment."
+  },
+  {
+    "id": 70,
+    "tags": ["ownership", "risk"],
+    "title": "Taking responsibility under risk",
+    "body": "Describe a time you took responsibility even when it was risky."
+  },
+  {
+    "id": 71,
+    "tags": ["customer", "empathy"],
+    "title": "Understanding user needs",
+    "body": "Describe a time you understood someone's needs better than they did."
+  },
+  {
+    "id": 72,
+    "tags": ["customer", "problem-solving"],
+    "title": "Solving user problem",
+    "body": "Tell me about a time you solved a problem for someone."
+  },
+  {
+    "id": 73,
+    "tags": ["customer", "communication"],
+    "title": "Communicating with difficult stakeholder",
+    "body": "Describe a time you worked with a difficult person."
+  },
+  {
+    "id": 74,
+    "tags": ["customer", "impact"],
+    "title": "Delivering value",
+    "body": "Tell me about a time when your work helped someone succeed."
+  },
+  {
+    "id": 75,
+    "tags": ["customer", "ownership"],
+    "title": "Fixing customer pain point",
+    "body": "Describe a time when you discovered and addressed a pain point."
+  },
+  {
+    "id": 76,
+    "tags": ["innovation", "creativity"],
+    "title": "Thinking out of the box",
+    "body": "Tell me about a time when you thought out of the box."
+  },
+  {
+    "id": 77,
+    "tags": ["innovation", "process"],
+    "title": "Redesigning process",
+    "body": "Describe a time you redesigned a workflow for better results."
+  },
+  {
+    "id": 78,
+    "tags": ["innovation", "automation"],
+    "title": "Automating manual work",
+    "body": "Tell me about a time you automated a manual step to save time."
+  },
+  {
+    "id": 79,
+    "tags": ["innovation", "efficiency"],
+    "title": "Improving efficiency",
+    "body": "Describe a time you improved efficiency without extra resources."
+  },
+  {
+    "id": 80,
+    "tags": ["innovation", "prototype"],
+    "title": "Rapid prototyping",
+    "body": "Tell me about a time you built a prototype to validate an idea."
+  },
+  {
+    "id": 81,
+    "tags": ["growth", "feedback"],
+    "title": "Acting on feedback",
+    "body": "Describe a time you changed based on feedback."
+  },
+  {
+    "id": 82,
+    "tags": ["growth", "reflection"],
+    "title": "Learning from mistakes",
+    "body": "Tell me about a time you realized you were wrong."
+  },
+  {
+    "id": 83,
+    "tags": ["growth", "improvement"],
+    "title": "Stepping out of comfort zone",
+    "body": "Describe a time you stepped out of your comfort zone."
+  },
+  {
+    "id": 84,
+    "tags": ["growth", "self-awareness"],
+    "title": "Recognizing weakness",
+    "body": "Tell me about a time you discovered a personal weakness."
+  },
+  {
+    "id": 85,
+    "tags": ["growth", "resilience"],
+    "title": "Handling setback",
+    "body": "Describe a time you received rejection and kept going."
+  },
+  {
+    "id": 86,
+    "tags": ["analytical", "data"],
+    "title": "Making decisions with data",
+    "body": "Tell me about a time data changed your decision."
+  },
+  {
+    "id": 87,
+    "tags": ["analytical", "details"],
+    "title": "Spotting patterns",
+    "body": "Describe a time you identified a pattern others missed."
+  },
+  {
+    "id": 88,
+    "tags": ["analytical", "metrics"],
+    "title": "Choosing the right metrics",
+    "body": "Tell me about a time you defined success metrics."
+  },
+  {
+    "id": 89,
+    "tags": ["analytical", "tradeoff"],
+    "title": "Evaluating alternatives",
+    "body": "Describe a time you analyzed multiple options and chose one."
+  },
+  {
+    "id": 90,
+    "tags": ["analytical", "solution"],
+    "title": "Breaking down a problem",
+    "body": "Tell me about a time you broke a large problem into smaller steps."
+  },
+  {
+    "id": 91,
+    "tags": ["planning", "time"],
+    "title": "Planning ahead",
+    "body": "Describe a time when planning ahead helped you avoid problems."
+  },
+  {
+    "id": 92,
+    "tags": ["planning", "resource"],
+    "title": "Resource planning",
+    "body": "Tell me about a time you had to plan with limited resources."
+  },
+  {
+    "id": 93,
+    "tags": ["planning", "estimation"],
+    "title": "Estimating effort",
+    "body": "Describe a time you estimated effort incorrectly and what you learned."
+  },
+  {
+    "id": 94,
+    "tags": ["planning", "roadmap"],
+    "title": "Roadmap prioritization",
+    "body": "Tell me about a time you prioritized tasks in a roadmap."
+  },
+  {
+    "id": 95,
+    "tags": ["planning", "follow-up"],
+    "title": "Following up",
+    "body": "Describe a time consistent follow-up made a difference."
+  },
+  {
+    "id": 96,
+    "tags": ["ethics", "responsibility"],
+    "title": "Maintaining integrity",
+    "body": "Tell me about a time doing the right thing was difficult."
+  },
+  {
+    "id": 97,
+    "tags": ["ethics", "confidential"],
+    "title": "Handling sensitive information",
+    "body": "Describe a time you handled confidential or sensitive data."
+  },
+  {
+    "id": 98,
+    "tags": ["ethics", "pressure"],
+    "title": "Pushing back",
+    "body": "Tell me about a time you pushed back on something unethical or unreasonable."
+  },
+  {
+    "id": 99,
+    "tags": ["ethics", "fairness"],
+    "title": "Ensuring fairness",
+    "body": "Describe a time you ensured fairness in a process."
+  },
+  {
+    "id": 100,
+    "tags": ["ethics", "accountability"],
+    "title": "Admitting mistakes honestly",
+    "body": "Tell me about a time you admitted a mistake instead of hiding it."
+  }
+]

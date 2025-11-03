@@ -138,4 +138,40 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+// get answers for one question
+router.get("/:id/answers", async (req, res, next) => {
+  try {
+    const db = getDB();
+    const qid = new ObjectId(req.params.id);
+    const items = await db
+      .collection("answers")
+      .find({ questionId: qid })
+      .sort({ createdAt: -1 })
+      .toArray();
+    res.json({ items });
+  } catch (e) {
+    next(e);
+  }
+});
+
+// Create an answer
+router.post("/:id/answers", async (req, res, next) => {
+  try {
+    const db = getDB();
+    const qid = new ObjectId(req.params.id);
+    const { type = "student", content } = req.body || {};
+    if (!content) return res.status(400).json({ error: "content required" });
+
+    const doc = {
+      questionId: qid,
+      type,
+      content,
+      createdAt: new Date(),
+    };
+    const { insertedId } = await db.collection("answers").insertOne(doc);
+    res.status(201).json({ _id: insertedId, ...doc });
+  } catch (e) {
+    next(e);
+  }
+});
 export default router;

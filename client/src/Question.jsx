@@ -36,7 +36,7 @@ function SearchBar({ q, setQ, tags, setTags, onSearch }) {
           className="form-control"
           value={tags}
           onChange={(e) => setTags(e.target.value)}
-          placeholder="PM, Communication…"
+          placeholder="conflict, teamwork, communication…"
         />
       </div>
       <div className="col-md-2 d-grid">
@@ -133,32 +133,129 @@ function Questions() {
   );
 }
 
-function QuestionDetail({ id }) {
-  const [item, setItem] = useState(null);
-  const [err, setErr] = useState("");
-  useEffect(() => {
-    (async () => {
-      try { setItem(await fetchJSON(`/api/questions/${id}`)); }
-      catch (e) { setErr(String(e.message || e)); }
-    })();
-  }, [id]);
-  if (err) return <div className="alert alert-danger">{err}</div>;
-  if (!item) return <div className="text-muted">Loading...</div>;
-  return (
-    <div>
-      <h3>{item.title}</h3>
-      <div className="text-muted small mb-3">
-        Tags: {Array.isArray(item.tags) ? item.tags.join(", ") : String(item.tags || "")}
-        {" · "}
+function AnswerItem({ ans }) {
+    const date = ans.createdAt ? new Date(ans.createdAt) : null;
+    const created = date && !isNaN(date) ? date.toLocaleString() : "";
+  
+    const badgeClass =
+      ans.type === "student" ? "bg-primary" :
+      ans.type === "experience" ? "bg-success" :
+      ans.type === "pm" ? "bg-warning text-dark" :
+      ans.type === "sales" ? "bg-info text-dark" :
+      "bg-secondary";
+  
+    return (
+      <div className="card mb-3">
+        <div className="card-body">
+          <span className={`badge me-2 text-uppercase ${badgeClass}`}>{ans.type || "answer"}</span>
+          {created && <span className="text-muted small">{created}</span>}
+          <p className="mt-2 mb-0" style={{ whiteSpace: "pre-wrap" }}>{ans.content}</p>
+        </div>
       </div>
-      <p style={{ whiteSpace: "pre-wrap" }}>{item.body}</p>
-    </div>
-  );
-}
+    );
+  }
+  
+  AnswerItem.propTypes = {
+    ans: PropTypes.shape({
+      _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      type: PropTypes.string,
+      content: PropTypes.string,
+      createdAt: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+    }).isRequired,
+  };
+  
 
-QuestionDetail.propTypes = {
-  id: PropTypes.string.isRequired,
-};
+  
+  function QuestionDetail({ id }) {
+    const [item, setItem] = useState(null);
+    const [err, setErr] = useState("");
+  
+    // toggle answers and lazy loading
+    const [expanded, setExpanded] = useState(false);
+    const [answers, setAnswers] = useState([]);
+    const [ansLoading, setAnsLoading] = useState(false);
+    const [ansLoaded, setAnsLoaded] = useState(false);
+    const [ansError, setAnsError] = useState("");
+  
+    // load question
+    useEffect(() => {
+      (async () => {
+        try {
+          setErr("");
+          setItem(await fetchJSON(`/api/questions/${id}`));
+        } catch (e) {
+          setErr(String(e?.message || e));
+        }
+      })();
+    }, [id]);
+  
+  
+    // toggle function
+    const toggleAnswers = async () => {
+      setExpanded((prev) => !prev);
+  
+
+      if (!ansLoaded && !ansLoading) {
+        try {
+          setAnsLoading(true);
+          setAnsError("");
+  
+          const data = await fetchJSON(`/api/questions/${id}/answers`); 
+          setAnswers(Array.isArray(data?.items) ? data.items : []);
+          setAnsLoaded(true);
+        } catch (e) {
+          setAnsError(String(e?.message || e));
+        } finally {
+          setAnsLoading(false);
+        }
+      }
+    };
+  
+  
+    if (err) return <div className="alert alert-danger">{err}</div>;
+    if (!item) return <div className="text-muted">Loading...</div>;
+  
+    const btnLabel = expanded ? "Hide answers" : (ansLoaded ? `Show answers (${answers.length})` : "Show answers");
+  
+    return (
+      <div>
+        <h3>{item.title}</h3>
+        <div className="text-muted small mb-3">
+          Tags: {Array.isArray(item.tags) ? item.tags.join(", ") : String(item.tags || "")}
+        </div>
+  
+        <p style={{ whiteSpace: "pre-wrap" }}>{item.body}</p>
+  
+        <hr className="my-4" />
+  
+        <button
+          className="btn btn-outline-primary"
+          onClick={toggleAnswers}
+          disabled={ansLoading}
+        >
+          {ansLoading ? "Loading..." : btnLabel}
+        </button>
+  
+        {expanded && (
+          <div className="mt-3">
+            {ansLoaded && answers.length === 0 && (
+              <div className="alert alert-secondary">No answers yet.</div>
+            )}
+            {ansLoaded && answers.map((a) => (
+              <AnswerItem key={a._id || `${a.type}-${Math.random()}`} ans={a} />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+  
+  
+  QuestionDetail.propTypes = {
+    id: PropTypes.string.isRequired,
+  };
+  
+  
 
 export default function App() {
   const route = useHashRoute();
