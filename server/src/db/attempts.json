@@ -1,0 +1,102 @@
+[
+  {
+    "content": "S: In a team project we disagreed on approach. T: We had to pick a direction quickly. A: I gathered options, aligned on customer impact, and proposed a phased approach. R: We shipped and iterated.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: A stakeholder wanted scope expansion. T: Keep timeline. A: I mapped trade-offs, proposed a reduced scope, and scheduled follow-ups. R: We met deadline and satisfied key stakeholders.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: I led a cross-functional sync with conflicting priorities. T: Find a compromise. A: I defined success metrics and negotiated sequencing. R: Delivery resumed with clear owners.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: We missed a deadline previously. T: Restore confidence. A: I owned up to the mistake, documented learnings, and set corrective steps. R: Team trust improved.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: A teammate underperformed. T: Keep morale and velocity. A: I had a direct coaching conversation and rebalanced tasks. R: Performance improved.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: We faced ambiguity on requirements. T: Move forward with limited data. A: I proposed experiments and guardrails. R: The experiment validated the direction.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: A critical bug appeared before launch. T: Fix quickly. A: I organized a blameless postmortem and prioritized fixes. R: We reduced recurrence.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: I received tough feedback. T: Use it to improve. A: I thanked the person, clarified examples, and changed my process. R: My subsequent work improved.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: A project had limited resources. T: Deliver value. A: I prioritized ruthlessly and automated repetitive work. R: We shipped a smaller but valuable iteration.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: I needed to influence without authority. T: Align stakeholders. A: I built relationships and presented data-driven options. R: The idea gained support.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: Time pressure to launch a feature. T: Maintain quality. A: I split the work into MVP and post-launch improvements. R: We launched on time and iterated.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: Cross-team miscommunication blocked progress. T: Re-establish clarity. A: I set up a short alignment meeting and documented action items. R: Blockers cleared.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: Limited data to decide. T: Move forward safely. A: I ran a small experiment and gathered signals. R: The decision was validated.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: Needed to motivate a teammate. T: Improve ownership. A: I set clear goals and recognized small wins. R: Engagement increased.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: A process was inefficient. T: Improve throughput. A: I proposed a template and automated steps. R: Cycle time decreased.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: I had to make a trade-off between scope and quality. T: Choose wisely. A: I prioritized core customer journeys. R: User satisfaction improved.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: I had to present bad news. T: Be transparent. A: I explained the impact, the plan, and next steps. R: Stakeholders appreciated the clarity.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: I needed to learn a new technology quickly. T: Deliver a prototype. A: I focused on core APIs and built a small demo. R: The demo informed the roadmap.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: A decision was called for with risk. T: Reduce uncertainty. A: I listed mitigations and staged the rollout. R: Risk was controlled.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  },
+  {
+    "content": "S: I had to recover from a failure. T: Restore momentum. A: I documented root causes and set measurable actions. R: The team regained confidence.",
+    "type": "user",
+    "createdAt": "2025-11-03T00:00:00.000Z"
+  }
+]
