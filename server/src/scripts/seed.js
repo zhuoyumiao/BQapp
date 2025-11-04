@@ -1,210 +1,253 @@
 // Seeding for the database
 
-import bcrypt from "bcryptjs";
-import fs from "fs/promises";
-import path from "path";
-import { connectDB } from "../db/connect.js";
+import bcrypt from 'bcryptjs';
+import fs from 'fs/promises';
+import path from 'path';
+import { connectDB } from '../db/connect.js';
 
-const DO_INSERT =
-  process.argv.includes("--insert") || process.env.SEED_INSERT === "true";
+const DO_INSERT = process.argv.includes('--insert') || process.env.SEED_INSERT === 'true';
 
-function makeUser(i) {
-  return {
-    name: `User ${i}`,
-    email: `user${i}@example.com`,
-    role: "user",
-    createdAt: new Date(),
-  };
+async function loadJson(name) {
+  const p = path.join(process.cwd(), 'src', 'db', name);
+  const raw = await fs.readFile(p, 'utf8');
+  return JSON.parse(raw);
 }
 
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-async function loadJson(fileName) {
-  const p = path.join(process.cwd(), "src", "db", fileName);
-  const raw = await fs.readFile(p, "utf8");
-  return JSON.parse(raw);
-}
-
 async function main() {
   const db = await connectDB();
 
-  // Ensure collections exist
-  const existing = await db.listCollections().toArray();
-  const names = existing.map((c) => c.name);
+  if (DO_INSERT) {
+    if ((process.env.NODE_ENV || '').toLowerCase() === 'production') {
+      throw new Error(
+        'Refusing to wipe DB in production. Unset NODE_ENV=production to allow for local debugging.'
+      );
+    }
+    console.log('SEED: dropping collections (questions, answers, users, attempts)');
+    for (const nm of ['questions', 'answers', 'users', 'attempts']) {
+      try {
+        const exists = await db.listCollections({ name: nm }).hasNext();
+        if (exists) await db.collection(nm).drop();
+      } catch (e) {
+        console.warn(`Could not drop ${nm}:`, e.message || e);
+      }
+    }
+  } else {
+    console.log(
+      'Dry-run: no destructive actions will be taken. Use --insert or SEED_INSERT=true to write.'
+    );
+  }
 
-  if (!names.includes("questions")) {
-    await db.createCollection("questions");
-    console.log("Created collection: questions");
+  // Collections
+  const questionsColl = db.collection('questions');
+  const answersColl = db.collection('answers');
+  const usersColl = db.collection('users');
+  const attemptsColl = db.collection('attempts');
+
+  // Load input files
+  let questions = [];
+  let canonicalAnswers = [];
+  let users = [];
+  let attemptsPool = [];
+  try {
+    questions = await loadJson('questions.json');
+  } catch (e) {
+    console.warn('questions.json not found');
   }
-  if (!names.includes("users")) {
-    await db.createCollection("users");
-    console.log("Created collection: users");
+  try {
+    canonicalAnswers = await loadJson('answers_all.json');
+  } catch (e) {
+    /* optional */
   }
-  if (!names.includes("attempts")) {
-    await db.createCollection("attempts");
-    console.log("Created collection: attempts");
+  try {
+    users = await loadJson('users.json');
+  } catch (e) {
+    /* optional */
+  }
+  try {
+    attemptsPool = await loadJson('attempts.json');
+  } catch (e) {
+    // Fall back to canonical answers content
+    attemptsPool = (canonicalAnswers || [])
+      .map((a) => (typeof a === 'string' ? a : a.content))
+      .filter(Boolean);
   }
 
   // Indexes
-  await db.collection("users").createIndex({ email: 1 }, { unique: true });
-  await db.collection("attempts").createIndex({ userId: 1 });
-  await db.collection("attempts").createIndex({ questionId: 1 });
-  console.log("Ensured indexes on users and attempts");
-
-  // Load questions.json into DB
-  const questionsFile = await loadJson("questions.json");
-  const questionsColl = db.collection("questions");
-
-  const idToObjectId = {};
-  for (const q of questionsFile) {
-    const filter = { id: q.id };
-    const update = { $setOnInsert: { ...q, createdAt: new Date() } };
-    const res = await questionsColl.findOneAndUpdate(filter, update, {
-      upsert: true,
-      returnDocument: "after",
-    });
-    idToObjectId[q.id] = res.value._id;
-  }
-  console.log(`Ensured ${Object.keys(idToObjectId).length} questions in DB.`);
-
-  // Create 20 users if missing
-  const usersColl = db.collection("users");
-  const desiredUsers = 20;
-  let usersFile = [];
   try {
-    usersFile = await loadJson("users.json");
-    console.log(`Loaded ${usersFile.length} users from users.json`);
-  } catch (err) {
-    // Will generate placeholder users
+    await usersColl.createIndex({ email: 1 }, { unique: true });
+  } catch (e) {
+    console.warn('users email index error:', e.message || e);
   }
-
-  const existingUsers = await usersColl
-    .find({ email: /@example\.com$/ })
-    .toArray();
-  const existingCount = existingUsers.length;
-
-  const usersToCreate = [];
-
-  if (usersFile && usersFile.length) {
-    for (const uf of usersFile.slice(0, desiredUsers)) {
-      const email = uf.email;
-      if (!existingUsers.find((u) => u.email === email)) {
-        const u = {
-          name: uf.name,
-          email: email,
-          role: uf.role || "user",
-          createdAt: uf.createdAt ? new Date(uf.createdAt) : new Date(),
-        };
-        // keep a seed-only plaintext password in memory
-        u._seedPassword = "password";
-        usersToCreate.push(u);
-      }
-    }
-  } else {
-    for (let i = 1; i <= desiredUsers; i++) {
-      const email = `user${i}@example.com`;
-      if (!existingUsers.find((u) => u.email === email)) {
-        const u = makeUser(i);
-        u._seedPassword = "password";
-        usersToCreate.push(u);
-      }
-    }
-  }
-  if (usersToCreate.length) {
-    if (DO_INSERT) {
-      // Hash passwords only when actually inserting
-      for (const u of usersToCreate) {
-        u.passwordHash = await bcrypt.hash(u._seedPassword || "password", 10);
-        delete u._seedPassword;
-      }
-      const r = await usersColl.insertMany(usersToCreate);
-      console.log(`Inserted ${r.insertedCount} users.`);
-    } else {
-      console.log(`Dry-run: would insert ${usersToCreate.length} users.`);
-    }
-  } else {
-    console.log(
-      `Found ${existingCount} existing users; no new users inserted.`
+  try {
+    await answersColl.createIndex(
+      { questionId: 1, type: 1, content: 1 },
+      { unique: true, name: 'uq_answers_qid_type_content' }
     );
+  } catch (e) {
+    /* maybe duplicates exist */
   }
-
-  const allUsers = await usersColl.find({ email: /@example\.com$/ }).toArray();
-
-  // Load attempts.json or fall back to answers_all.json
-  let answersPool = [];
   try {
-    const poolRaw = await loadJson("attempts.json");
-    answersPool = poolRaw
-      .map((a) => (typeof a === "string" ? a : a.content))
-      .filter(Boolean);
-    console.log(`Loaded ${answersPool.length} entries from attempts.json`);
-  } catch (err) {
-    try {
-      const raw = await loadJson("answers_all.json");
-      answersPool = raw.map((a) => a.content).filter(Boolean);
-      console.log(`Loaded ${answersPool.length} entries from answers_all.json`);
-    } catch (inner) {
-      console.log("No attempts pool found; will use template content.");
+    await attemptsColl.createIndex({ userId: 1 });
+    await attemptsColl.createIndex({ questionId: 1 });
+  } catch (e) {
+    /* ignore */
+  }
+
+  // Seed questions
+  const idToObjectId = {};
+  if (questions && questions.length) {
+    if (DO_INSERT) {
+      const docs = questions.map((q) => ({
+        ...q,
+        createdAt: q.createdAt ? new Date(q.createdAt) : new Date(),
+      }));
+      try {
+        const r = await questionsColl.insertMany(docs, { ordered: false });
+        // Map by original array order
+        for (const [idx, id] of Object.entries(r.insertedIds)) {
+          const q = docs[Number(idx)];
+          if (q && q.id) idToObjectId[q.id] = id;
+        }
+      } catch (e) {
+        // If partial insert or duplicates, read back inserted questions
+        console.warn('questions insert warning:', e.message || e);
+        const allQ = await questionsColl.find({}).toArray();
+        for (const q of allQ) if (q.id) idToObjectId[q.id] = q._id;
+      }
+    } else {
+      console.log(`Dry-run: would insert ${questions.length} questions`);
     }
   }
 
-  const attemptsColl = db.collection("attempts");
-  const attemptsPerUser = 25;
-
-  for (const user of allUsers) {
-    const existingAttemptsCount = await attemptsColl.countDocuments({
-      userId: user._id,
-    });
-    const toInsert = Math.max(0, attemptsPerUser - existingAttemptsCount);
-    if (toInsert <= 0) {
-      console.log(
-        `User ${user.email} already has ${existingAttemptsCount} attempts; skipping.`
-      );
-      continue;
-    }
-
-    const docs = [];
-    for (let i = 0; i < toInsert; i++) {
-      const qIds = Object.values(idToObjectId);
-      const qid = qIds.length ? pickRandom(qIds) : null;
-      const content = answersPool.length
-        ? pickRandom(answersPool)
-        : `S: Example answer for ${user.email}`;
-      docs.push({
-        userId: user._id,
-        questionId: qid,
-        type: "user",
+  // Seed canonical answers
+  if (canonicalAnswers && canonicalAnswers.length) {
+    const out = [];
+    for (const a of canonicalAnswers) {
+      const content = a.content || (typeof a === 'string' ? a : null);
+      if (!content) continue;
+      // Try to find a question title quoted in the answer
+      const match = content.match(/"([^"]+)"|“([^”]+)”|‘([^’]+)’/);
+      let qTitle = match ? match[1] || match[2] || match[3] : null;
+      let qDoc = null;
+      if (qTitle) qDoc = await questionsColl.findOne({ title: qTitle });
+      if (!qDoc && a.questionId && a.questionId.$oid) {
+        try {
+          const { ObjectId } = await import('mongodb');
+          if (ObjectId.isValid(a.questionId.$oid))
+            qDoc = await questionsColl.findOne({ _id: new ObjectId(a.questionId.$oid) });
+        } catch (e) {}
+      }
+      if (!qDoc) continue; // skip orphan answers
+      out.push({
+        questionId: qDoc._id,
+        type: a.type || 'student',
         content,
-        createdAt: new Date(
-          Date.now() - Math.floor(Math.random() * 1000 * 60 * 60 * 24 * 365)
-        ),
+        createdAt: a.createdAt ? new Date(a.createdAt) : new Date(),
       });
     }
-
-    if (docs.length) {
+    if (out.length) {
       if (DO_INSERT) {
-        const r = await attemptsColl.insertMany(docs);
-        console.log(`Inserted ${r.insertedCount} attempts for ${user.email}`);
+        try {
+          await answersColl.insertMany(out, { ordered: false });
+        } catch (e) {
+          console.warn('answers insert warning:', e.message || e);
+        }
+        console.log(`Inserted ${out.length} canonical answers (best-effort)`);
       } else {
-        console.log(
-          `Dry-run: would insert ${docs.length} attempts for ${user.email}`
-        );
+        console.log(`Dry-run: would insert ${out.length} canonical answers`);
       }
     }
   }
 
-  console.log("Seeding complete.");
-  if (!DO_INSERT) {
-    console.log(
-      "Note: this was a dry-run. To actually write data run: node src/scripts/seed.js --insert"
-    );
+  // Seed users
+  const desiredUsers = 20;
+  const userDocs = [];
+  if (users && users.length) {
+    for (const u of users.slice(0, desiredUsers)) {
+      userDocs.push({
+        name: u.name,
+        email: u.email,
+        role: u.role || 'user',
+        createdAt: u.createdAt ? new Date(u.createdAt) : new Date(),
+      });
+    }
   }
+  while (userDocs.length < desiredUsers) {
+    const i = userDocs.length + 1;
+    userDocs.push({
+      name: `User ${i}`,
+      email: `user${i}@example.com`,
+      role: 'user',
+      createdAt: new Date(),
+    });
+  }
+
+  if (userDocs.length) {
+    if (DO_INSERT) {
+      for (const u of userDocs) {
+        u.passwordHash = await bcrypt.hash('password', 10);
+      }
+      try {
+        await usersColl.insertMany(userDocs, { ordered: false });
+        console.log(`Inserted ${userDocs.length} users`);
+      } catch (e) {
+        console.warn('users insert warning:', e.message || e);
+      }
+    } else {
+      console.log(`Dry-run: would insert ${userDocs.length} users`);
+    }
+  }
+
+  // Refresh users and question id mapping
+  const allUsers = await usersColl.find({}).toArray();
+  const qDocs = await questionsColl.find({}).toArray();
+  const qIds = qDocs.map((q) => q._id);
+
+  // Build attempts pool
+  const pool =
+    attemptsPool && attemptsPool.length
+      ? attemptsPool.map((a) => (typeof a === 'string' ? a : a.content)).filter(Boolean)
+      : ['Example answer'];
+
+  // Seed attempts
+  const attemptsPerUser = 25;
+  const allAttemptDocs = [];
+  for (const u of allUsers) {
+    for (let i = 0; i < attemptsPerUser; i++) {
+      allAttemptDocs.push({
+        userId: u._id,
+        questionId: qIds.length ? pickRandom(qIds) : null,
+        type: 'user',
+        content: pickRandom(pool),
+        createdAt: new Date(Date.now() - Math.floor(Math.random() * 1000 * 60 * 60 * 24 * 365)),
+      });
+    }
+  }
+
+  if (allAttemptDocs.length) {
+    if (DO_INSERT) {
+      try {
+        await attemptsColl.insertMany(allAttemptDocs, { ordered: false });
+        console.log(`Inserted ${allAttemptDocs.length} attempts`);
+      } catch (e) {
+        console.warn('attempts insert warning:', e.message || e);
+      }
+    } else {
+      console.log(`Dry-run: would insert ${allAttemptDocs.length} attempts`);
+    }
+  }
+
+  console.log('Seed complete.');
+  if (!DO_INSERT)
+    console.log('Run with --insert or SEED_INSERT=true to actually write and drop collections.');
   process.exit(0);
 }
 
 main().catch((err) => {
-  console.error("Seed failed:", err);
+  console.error('Seed failed:', err);
   process.exit(1);
 });
