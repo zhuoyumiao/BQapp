@@ -20,7 +20,7 @@ export default function QuestionDetail({ id }) {
     (async () => {
       try {
         setErr("");
-        setItem(await fetchJSON(`/api/questions/${id}`));
+        setItem(await fetchJSON(`/api/v1/questions/${id}`));
       } catch (e) {
         setErr(String(e?.message || e));
       }
@@ -36,7 +36,7 @@ export default function QuestionDetail({ id }) {
         setAnsLoading(true);
         setAnsError("");
 
-        const data = await fetchJSON(`/api/questions/${id}/answers`);
+        const data = await fetchJSON(`/api/v1/questions/${id}/answers`);
         setAnswers(Array.isArray(data?.items) ? data.items : []);
         setAnsLoaded(true);
       } catch (e) {

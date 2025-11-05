@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { connectDB } from './db/connect.js';
 import questionsRouter from './routes/question.js';
+import attemptsRouter from './routes/attempts.js';
 import usersRouter from './routes/users.js';
 import authRouter from './routes/auth.js';
 import { sessionMiddleware } from './middleware/session.js';
@@ -27,7 +28,8 @@ app.use(express.json());
 app.use(sessionMiddleware());
 app.use(attachUser);
 
-app.use('/api/questions', questionsRouter);
+app.use('/api/v1/questions', questionsRouter);
+app.use('/api/v1/attempts', attemptsRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/auth', authRouter);
 

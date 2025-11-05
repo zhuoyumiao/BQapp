@@ -21,7 +21,7 @@ export default function Questions() {
     params.set("page", String(p));
     params.set("limit", String(pageSize));
 
-    const data = await fetchJSON(`/api/questions?${params.toString()}`);
+    const data = await fetchJSON(`/api/v1/questions?${params.toString()}`);
     setItems(data.items || []);
     setTotal(Number(data.total || 0));
     setPage(Number(data.page || 1));
