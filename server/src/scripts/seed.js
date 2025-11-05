@@ -59,14 +59,10 @@ async function main() {
   }
   try {
     canonicalAnswers = await loadJson('answers_all.json');
-  } catch (e) {
-    /* optional */
-  }
+  } catch (e) {}
   try {
     users = await loadJson('users.json');
-  } catch (e) {
-    /* optional */
-  }
+  } catch (e) {}
   try {
     attemptsPool = await loadJson('attempts.json');
   } catch (e) {
@@ -87,15 +83,11 @@ async function main() {
       { questionId: 1, type: 1, content: 1 },
       { unique: true, name: 'uq_answers_qid_type_content' }
     );
-  } catch (e) {
-    /* maybe duplicates exist */
-  }
+  } catch (e) {}
   try {
     await attemptsColl.createIndex({ userId: 1 });
     await attemptsColl.createIndex({ questionId: 1 });
-  } catch (e) {
-    /* ignore */
-  }
+  } catch (e) {}
 
   // Seed questions
   const idToObjectId = {};
@@ -118,6 +110,7 @@ async function main() {
         const allQ = await questionsColl.find({}).toArray();
         for (const q of allQ) if (q.id) idToObjectId[q.id] = q._id;
       }
+      console.log(`Inserted ${docs.length} questions`);
     } else {
       console.log(`Dry-run: would insert ${questions.length} questions`);
     }
@@ -141,7 +134,7 @@ async function main() {
             qDoc = await questionsColl.findOne({ _id: new ObjectId(a.questionId.$oid) });
         } catch (e) {}
       }
-      if (!qDoc) continue; // skip orphan answers
+      if (!qDoc) continue;
       out.push({
         questionId: qDoc._id,
         type: a.type || 'student',
@@ -156,7 +149,7 @@ async function main() {
         } catch (e) {
           console.warn('answers insert warning:', e.message || e);
         }
-        console.log(`Inserted ${out.length} canonical answers (best-effort)`);
+        console.log(`Inserted ${out.length} canonical answers`);
       } else {
         console.log(`Dry-run: would insert ${out.length} canonical answers`);
       }
