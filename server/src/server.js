@@ -8,6 +8,7 @@ import questionsRouter from './routes/question.js';
 import attemptsRouter from './routes/attempts.js';
 import usersRouter from './routes/users.js';
 import authRouter from './routes/auth.js';
+import practiceRouter from './routes/practice.js';
 import { sessionMiddleware } from './middleware/session.js';
 import { attachUser } from './middleware/auth.js';
 
@@ -32,6 +33,7 @@ app.use('/api/v1/questions', questionsRouter);
 app.use('/api/v1/attempts', attemptsRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/practice', practiceRouter);
 
 // 404 for API
 app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }));

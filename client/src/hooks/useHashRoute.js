@@ -31,6 +31,12 @@ export default function useHashRoute() {
   // #/register
   if (/^#\/register$/.test(hash)) return { name: 'register' };
 
+  // #/practice
+  if (/^#\/practice$/.test(hash)) return { name: 'practice' };
+
+  // #/compare
+  if (/^#\/compare$/.test(hash)) return { name: 'compare' };
+
   // #/user/<id>
   {
     const m = hash.match(/^#\/user\/(.+)$/);

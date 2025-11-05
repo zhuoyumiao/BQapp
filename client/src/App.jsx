@@ -9,6 +9,8 @@ import Submissions from './components/Submissions';
 import AttemptDetail from './components/AttemptDetail.jsx';
 import Login from './components/Login';
 import Register from './components/Register';
+import Practice from './components/Practice';
+import Comparison from './components/Comparison';
 import { fetchJSON } from './lib/http';
 
 export default function App() {
@@ -40,6 +42,9 @@ export default function App() {
           </a>
           <a className="btn btn-sm btn-outline-info" href="#/users">
             Users
+          </a>
+          <a className="btn btn-sm btn-outline-success" href="#/practice">
+            Practice
           </a>
           {!user && (
             <>
@@ -84,6 +89,10 @@ export default function App() {
       {route.name === 'detail' && <QuestionDetail id={route.id} />}
 
       {route.name === 'users' && <Users />}
+
+      {route.name === 'practice' && <Practice />}
+
+      {route.name === 'compare' && <Comparison />}
 
       {route.name === 'userDetail' && <UserDetail id={route.id} />}
 
