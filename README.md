@@ -1,6 +1,6 @@
 # BQ App
 ## 🎯 Project Objective
-A Node + Express + Front-end rendering React with Hooks  + Mongo web app that helps users prepare for behavioral interviews (“BQ”) by practicing common questions across professional tracks (e.g., PM, consulting). Users can log in, get a random interview question, type their answer, and compare it with a suggested answer to self-evaluate.
+A Node + Express + Front-end rendering React with Hooks  + Mongo web app that helps users prepare for behavioral interviews (“BQ”) by practicing common questions across professional tracks. Users can log in, get a random interview question, type their answer, and compare it with a suggested answer to self-evaluate.
 
 ## 📥 Installation & Usage
 ```bash
@@ -47,17 +47,13 @@ This project was created as part of the **CS5610 Web Development** course at Nor
 
 ## 📝 Resources:
 Website Link: 
-Design document: [DesignDocument]().    
+Design document: https://docs.google.com/document/d/13b1pRa5lO_Lp83we7CcGD8SsMKdpSByGaRUvohujUd8/edit?usp=sharing  
 Link of video demonstration: 
 Demonstration slide:  
 
 ---
-## 🤖 AI usage
-Used ChatGPT to help create useHashRoute.js. Used the GPT-5 and prompt "create useHashRoute file for frontend react app".
-
----
 ## Database records
-There are (100question+100*4answers) + (20user*25attempt) + 20users = 1020 records in total
+There are (100question + 100 * 4answers) + (20user * 25attempt) + 20users = 1020 records in total
 ![Database Screenshot1]()
 
 ---
@@ -70,3 +66,8 @@ User(Muchen Qi) and Question(Zhuoyu Miao) have CRUD operations supported.
 
 ## React Components (using hooks)
 Questions.jsx, QuestionDetail.jsx, AttemptDetail.jsx...
+
+---
+## 🤖 AI usage
+Used ChatGPT to help create useHashRoute.js. Used the GPT-5 and prompt "create useHashRoute file for frontend react app".
+Used ChatGPT to help generate sample answers. Used the GPT-5 and prompt "generate sample answers according to my questions".

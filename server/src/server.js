@@ -30,10 +30,10 @@ app.use(sessionMiddleware());
 app.use(attachUser);
 
 app.use('/api/v1/questions', questionsRouter);
-app.use('/api/v1/attempts', attemptsRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/practice', practiceRouter);
+app.use('/api/v1/attempts', attemptsRouter);
 
 // 404 for API
 app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }));

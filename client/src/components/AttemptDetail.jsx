@@ -36,12 +36,12 @@ export default function AttemptDetail({ id }) {
     <div>
       <div className="d-flex align-items-center gap-2 mb-3">
         <a className="btn btn-outline-secondary btn-sm" href="#/submissions">Back</a>
-        <h3 className="mb-0">Attempt #{String(attempt._id)}</h3>
-      </div>
-
-      <div className="text-muted small mb-3">
+        <div className="mb-0">
         {createdText}{mins}
       </div>
+      </div>
+
+
 
       <div className="card mb-4 shadow-sm border-0">
         <div className="card-body">

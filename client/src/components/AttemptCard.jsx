@@ -20,9 +20,9 @@ export default function AttemptCard({ item }) {
         <div className="d-flex justify-content-between align-items-start">
           <div>
             <h5 className="card-title mb-1">
-              <a href={`#/attempt/${item._id}`}>Attempt #{String(item._id)}</a>
+                <div className="text-muted small">{created}{mins}</div>
             </h5>
-            <div className="text-muted small">{created}{mins}</div>
+            
           </div>
           {item.questionId && (
             <a className="btn btn-sm btn-outline-secondary" href={`#/attempt/${item._id}#view-question`}>
