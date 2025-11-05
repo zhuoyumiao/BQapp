@@ -6,8 +6,19 @@ export default function Users() {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
   const [q, setQ] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    // Fetch current user to know if we should show search (admin only)
+    (async () => {
+      try {
+        const me = await fetchJSON('/api/v1/auth/me', { credentials: 'include' });
+        setIsAdmin(Boolean(me?.user?.role === 'admin'));
+      } catch (e) {
+        setIsAdmin(false);
+      }
+    })();
+
     (async () => {
       try {
         setErr('');
@@ -27,17 +38,19 @@ export default function Users() {
     <div>
       <div className="d-flex mb-3 align-items-center">
         <h3 className="me-auto">Users</h3>
-        <div className="input-group" style={{ maxWidth: 360 }}>
-          <input
-            className="form-control"
-            placeholder="search name or email"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-          />
-          <button className="btn btn-outline-secondary" onClick={() => setQ('')}>
-            Clear
-          </button>
-        </div>
+        {isAdmin && (
+          <div className="input-group" style={{ maxWidth: 360 }}>
+            <input
+              className="form-control"
+              placeholder="search name or email"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
+            <button className="btn btn-outline-secondary" onClick={() => setQ('')}>
+              Clear
+            </button>
+          </div>
+        )}
       </div>
 
       {err && <div className="alert alert-danger">{err}</div>}

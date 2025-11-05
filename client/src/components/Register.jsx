@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchJSON } from '../lib/http';
 
 export default function Register({ onLogin }) {
@@ -36,7 +36,9 @@ export default function Register({ onLogin }) {
             await onLogin();
           } catch (e) {}
         }
-        setTimeout(() => (window.location.hash = '#/'), 600);
+        setSuccess('Registered and logged in — refreshing...');
+        // Full reload to ensure navbar/app state reflects authenticated user
+        setTimeout(() => window.location.reload(), 700);
         return;
       } catch (loginErr) {
         setError(err.message || String(err));
@@ -47,6 +49,21 @@ export default function Register({ onLogin }) {
       setLoading(false);
     }
   }
+
+  // If already authenticated, redirect to home
+  useEffect(() => {
+    let mounted = true;
+    fetchJSON('/api/v1/auth/me', { credentials: 'include' })
+      .then((res) => {
+        if (mounted && res && res.user) {
+          window.location.hash = '#/';
+        }
+      })
+      .catch(() => {});
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <div className="card mx-auto" style={{ maxWidth: 540 }}>
