@@ -27,3 +27,11 @@ export function requireAuth(req, res, next) {
   if (req.user) return next();
   return res.status(401).json({ error: 'Unauthorized' });
 }
+
+export function requireRole(role) {
+  return (req, res, next) => {
+    if (!req.user?._id) return res.status(401).json({ error: 'Unauthorized' });
+    if (req.user.role !== role) return res.status(403).json({ error: 'Forbidden' });
+    next();
+  };
+}

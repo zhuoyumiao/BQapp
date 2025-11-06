@@ -53,7 +53,7 @@ Demonstration slide:
 
 ---
 ## Database records
-There are (100question + 100 * 4answers) + (20user * 25attempt) + 20users = 1020 records in total
+There are (100question + 100 * 4answers) + (20 * 25 attempt) + 20users = 1020 records in total
 ![Database Screenshot1]()
 
 ---

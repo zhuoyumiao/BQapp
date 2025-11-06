@@ -5,7 +5,7 @@ import { connectDB } from '../db/connect.js';
 
 const router = Router();
 
-// get userid from middlware
+// get userid
 function getUserId(req) {
   if (!req.user?.id && !req.user?._id) throw new Error('Unauthorized: missing req.user.id');
   return req.user._id;

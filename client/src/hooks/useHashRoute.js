@@ -10,6 +10,22 @@ export default function useHashRoute() {
     return () => window.removeEventListener('hashchange', update);
   }, []);
 
+  // #/admin/questions/<id>/edit
+  {
+    const m = hash.match(/^#\/admin\/questions\/([^/]+)\/edit$/);
+    if (m) return { name: 'adminEditQuestion', id: m[1] };
+  }
+
+  // #/admin/questions/new
+  if (hash === '#/admin/questions/new') {
+    return { name: 'adminNewQuestion' };
+  }
+
+  // #/admin/questions
+  if (hash === '#/admin/questions') {
+    return { name: 'adminQuestions' };
+  }
+
   // #/attempt/<id>
   {
     const m = hash.match(/^#\/attempt\/(.+)$/);
