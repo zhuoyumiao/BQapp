@@ -29,7 +29,7 @@ router.get('/', async (req, res, next) => {
     const cursor = db
       .collection('questions')
       .find(query)
-      .sort({ [sortField]: sortOrder === 'desc' ? -1 : 1 })
+      .sort({ [sortField]: sortOrder === 'desc' ? -1 : 1, _id: sortOrder === 'desc' ? -1 : 1 })
       .skip((Number(page) - 1) * Number(limit))
       .limit(Number(limit));
 

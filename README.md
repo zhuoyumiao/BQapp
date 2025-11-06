@@ -34,6 +34,7 @@ npm run start:client
 ---
 
 ## 📸 Demo
+![Demo1]()
 
 ## 👩‍💻 Author & Link
 Author: Zhuoyu Miao & Muchen Qi
@@ -54,7 +55,7 @@ Demonstration slide:
 ---
 ## Database records
 There are (100question + 100 * 4answers) + (20 * 25 attempt) + 20users = 1020 records in total
-![Database Screenshot1]()
+![Database Screenshot1](./resources/database.png)
 
 ---
 ## CRUD operations
@@ -62,7 +63,7 @@ User(Muchen Qi) and Question(Zhuoyu Miao) have CRUD operations supported.
 
 ---
 ## Instructions to use 
-![Instructions Screenshot1]()
+![Instructions Screenshot1](./resources/instruction.png)
 
 ## React Components (using hooks)
 Questions.jsx, QuestionDetail.jsx, AttemptDetail.jsx...
