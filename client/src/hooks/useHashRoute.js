@@ -53,6 +53,9 @@ export default function useHashRoute() {
   // #/compare
   if (/^#\/compare$/.test(hash)) return { name: 'compare' };
 
+  // #/auth
+  if (/^#\/auth$/.test(hash)) return { name: 'auth' };
+
   // #/user/<id>
   {
     const m = hash.match(/^#\/user\/(.+)$/);

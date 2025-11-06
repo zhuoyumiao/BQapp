@@ -32,9 +32,29 @@ export default function Practice() {
     loadRandom();
   }, []);
 
-  function handleCompare() {
+  async function handleCompare() {
     if (!question) return;
+    setError(null);
     const payload = { question, answers, answersByType, userAnswer };
+
+    try {
+      // Try to save attempt on the server (requires auth)
+      const saved = await fetchJSON('/api/v1/attempts', {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify({ questionId: question._id, content: userAnswer }),
+      });
+      if (saved && saved._id) payload.attemptId = saved._id;
+    } catch (e) {
+      // If not authorized, prompt login
+      const msg = String(e.message || e);
+      if (msg.includes('401')) {
+        setError('Please log in to save your answer. You can still compare locally.');
+      } else {
+        setError('Could not save your answer to the server — continuing with local comparison.');
+      }
+    }
+
     try {
       sessionStorage.setItem('comparePayload', JSON.stringify(payload));
       window.location.hash = '#/compare';

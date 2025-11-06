@@ -9,6 +9,9 @@ export default function UserDetail({ id }) {
   const [saving, setSaving] = useState(false);
 
   const [form, setForm] = useState({ name: '', email: '', password: '', role: '' });
+  const [currentEmail, setCurrentEmail] = useState(null);
+  const [isAdminViewer, setIsAdminViewer] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -18,6 +21,15 @@ export default function UserDetail({ id }) {
         const u = await fetchJSON(`/api/v1/users/${id}`);
         setUser(u);
         setForm({ name: u.name || '', email: u.email || '', password: '', role: u.role || 'user' });
+        // Fetch current user
+        try {
+          const me = await fetchJSON('/api/v1/auth/me', { credentials: 'include' });
+          setCurrentEmail(me?.user?.email || null);
+          setIsAdminViewer(Boolean(me?.user?.role === 'admin'));
+        } catch (e) {
+          setCurrentEmail(null);
+          setIsAdminViewer(false);
+        }
       } catch (e) {
         setErr(String(e?.message || e));
       } finally {
@@ -43,6 +55,7 @@ export default function UserDetail({ id }) {
       });
       setUser(updated);
       setForm((f) => ({ ...f, password: '' }));
+      setEditing(false);
     } catch (e) {
       setErr(String(e?.message || e));
     } finally {
@@ -62,51 +75,110 @@ export default function UserDetail({ id }) {
 
   if (err) return <div className="alert alert-danger">{err}</div>;
   if (loading || !user) return <div className="text-muted">Loading...</div>;
+  const cancelEdit = () => {
+    setForm({
+      name: user.name || '',
+      email: user.email || '',
+      password: '',
+      role: user.role || 'user',
+    });
+    setEditing(false);
+    setErr('');
+  };
 
   return (
     <div>
       <h3>User: {user.name}</h3>
 
-      <form onSubmit={save} className="mt-3">
-        <div className="mb-3">
-          <label className="form-label">Name</label>
-          <input className="form-control" value={form.name} onChange={onChange('name')} />
-        </div>
+      {!editing ? (
+        <div className="mt-3">
+          <div className="mb-2">
+            <strong>Name:</strong> {user.name}
+          </div>
+          <div className="mb-2">
+            <strong>Email:</strong> {user.email}
+          </div>
+          {isAdminViewer && (
+            <div className="mb-2">
+              <strong>Role:</strong> {user.role}
+            </div>
+          )}
 
-        <div className="mb-3">
-          <label className="form-label">Email</label>
-          <input className="form-control" value={form.email} onChange={onChange('email')} />
-        </div>
+          <div className="d-flex gap-2 mt-3">
+            {currentEmail === user.email && (
+              <button type="button" className="btn btn-primary" onClick={() => setEditing(true)}>
+                Edit
+              </button>
+            )}
 
-        <div className="mb-3">
-          <label className="form-label">Password (leave blank to keep)</label>
-          <input
-            type="password"
-            className="form-control"
-            value={form.password}
-            onChange={onChange('password')}
-          />
-        </div>
+            {currentEmail === user.email && (
+              <button
+                type="button"
+                className="btn btn-outline-danger"
+                onClick={async () => {
+                  try {
+                    await fetchJSON('/api/v1/auth/logout', {
+                      method: 'POST',
+                      credentials: 'include',
+                    });
+                  } catch (e) {}
+                  window.location.hash = '#/';
+                  setTimeout(() => window.location.reload(), 200);
+                }}
+              >
+                Logout
+              </button>
+            )}
 
-        <div className="mb-3">
-          <label className="form-label">Role</label>
-          <input className="form-control" value={form.role} onChange={onChange('role')} />
+            <a className="btn btn-secondary" href="#/">
+              Back
+            </a>
+          </div>
         </div>
+      ) : (
+        <form onSubmit={save} className="mt-3">
+          <div className="mb-3">
+            <label className="form-label">Name</label>
+            <input className="form-control" value={form.name} onChange={onChange('name')} />
+          </div>
 
-        {err && <div className="alert alert-danger">{err}</div>}
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input className="form-control" value={form.email} onChange={onChange('email')} />
+          </div>
 
-        <div className="d-flex gap-2">
-          <button className="btn btn-primary" type="submit" disabled={saving}>
-            {saving ? 'Saving...' : 'Save'}
-          </button>
-          <button type="button" className="btn btn-danger" onClick={remove}>
-            Delete
-          </button>
-          <a className="btn btn-secondary" href="#/users">
-            Back
-          </a>
-        </div>
-      </form>
+          <div className="mb-3">
+            <label className="form-label">Password (leave blank to keep)</label>
+            <input
+              type="password"
+              className="form-control"
+              value={form.password}
+              onChange={onChange('password')}
+            />
+          </div>
+
+          {isAdminViewer && (
+            <div className="mb-3">
+              <label className="form-label">Role</label>
+              <input className="form-control" value={form.role} onChange={onChange('role')} />
+            </div>
+          )}
+
+          {err && <div className="alert alert-danger">{err}</div>}
+
+          <div className="d-flex gap-2">
+            <button className="btn btn-primary" type="submit" disabled={saving}>
+              {saving ? 'Saving...' : 'Save'}
+            </button>
+            <button type="button" className="btn btn-danger" onClick={remove}>
+              Delete Account
+            </button>
+            <button type="button" className="btn btn-secondary" onClick={cancelEdit}>
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 }

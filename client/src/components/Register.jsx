@@ -36,13 +36,13 @@ export default function Register({ onLogin }) {
             await onLogin();
           } catch (e) {}
         }
-        setSuccess('Registered and logged in — refreshing...');
-        // Full reload to ensure navbar/app state reflects authenticated user
-        setTimeout(() => window.location.reload(), 700);
-        return;
-      } catch (loginErr) {
-        setError(err.message || String(err));
-      }
+      } catch (_) {}
+
+      setSuccess('Registered — redirecting to home...');
+      // Navigate to home and reload
+      window.location.hash = '#/';
+      setTimeout(() => window.location.reload(), 400);
+      return;
     } catch (err) {
       setError(err.message || String(err));
     } finally {

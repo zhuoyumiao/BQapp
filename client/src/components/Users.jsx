@@ -37,7 +37,7 @@ export default function Users() {
   return (
     <div>
       <div className="d-flex mb-3 align-items-center">
-        <h3 className="me-auto">Users</h3>
+        <h3 className="me-auto">User Profile</h3>
         {isAdmin && (
           <div className="input-group" style={{ maxWidth: 360 }}>
             <input

@@ -7,7 +7,11 @@ const router = Router();
 
 // get userid
 function getUserId(req) {
-  if (!req.user?.id && !req.user?._id) throw new Error('Unauthorized: missing req.user.id');
+  if (!req.user?._id) {
+    const err = new Error('Unauthorized');
+    err.status = 401;
+    throw err;
+  }
   return req.user._id;
 }
 
@@ -76,6 +80,44 @@ router.get('/:id', async (req, res, next) => {
     }
 
     res.json({ ...attempt, question });
+  } catch (e) {
+    next(e);
+  }
+});
+
+// POST /api/v1/attempts
+// create a new attempt (authenticated users only)
+router.post('/', async (req, res, next) => {
+  try {
+    const db = await connectDB();
+    const attempts = db.collection('attempts');
+
+    const userId = getUserId(req);
+    const { questionId, content, type = 'user' } = req.body || {};
+    if (!content) return res.status(400).json({ error: 'content required' });
+
+    let qid = null;
+    if (questionId) {
+      if (ObjectId.isValid(questionId)) qid = new ObjectId(questionId);
+      else if (typeof questionId === 'object' && questionId._id) {
+        try {
+          qid = new ObjectId(questionId._id || questionId);
+        } catch (e) {
+          qid = null;
+        }
+      }
+    }
+
+    const doc = {
+      userId,
+      questionId: qid,
+      type,
+      content,
+      createdAt: new Date(),
+    };
+
+    const { insertedId } = await attempts.insertOne(doc);
+    res.status(201).json({ _id: insertedId, ...doc });
   } catch (e) {
     next(e);
   }

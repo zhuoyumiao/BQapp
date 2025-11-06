@@ -27,6 +27,7 @@ export default function Login({ onLogin }) {
       }
       setSuccess('Logged in. Refreshing...');
       // Full page reload to ensure all app state and nav update correctly
+      window.location.hash = '#/';
       setTimeout(() => window.location.reload(), 600);
     } catch (err) {
       setError(err.message || String(err));
