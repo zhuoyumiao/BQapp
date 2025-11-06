@@ -27,7 +27,7 @@ export default function App() {
     try {
       const res = await fetchJSON('/api/v1/auth/me', { credentials: 'include' });
       setUser(res.user || null);
-    } catch (e) {
+    } catch {
       setUser(null);
     } finally {
       setLoadingUser(false);
@@ -44,7 +44,8 @@ export default function App() {
         method: 'POST',
         credentials: 'include',
       });
-    } catch (_) {}
+    } catch {// ignore errors 
+    }
 
     window.location.href = "#/";
     window.location.reload();

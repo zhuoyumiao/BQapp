@@ -33,9 +33,6 @@ npm run start:client
 
 ---
 
-## 📸 Demo
-![Demo1]()
-
 ## 👩‍💻 Author & Link
 Author: Zhuoyu Miao & Muchen Qi
 
@@ -51,6 +48,11 @@ Website Link:
 Design document: https://docs.google.com/document/d/13b1pRa5lO_Lp83we7CcGD8SsMKdpSByGaRUvohujUd8/edit?usp=sharing  
 Link of video demonstration: 
 Demonstration slide:  
+
+---
+
+## 📸 Demo
+![Demo1]()
 
 ---
 ## Database records
