@@ -52,7 +52,20 @@ Demonstration slide:
 ---
 
 ## 📸 Demo
-![Demo1]()
+![Demo1](./resources/demo1.png)
+![Demo1](./resources/demo2.png)
+![Demo1](./resources/demo3.png)
+![Demo1](./resources/demo4.png)
+![Demo1](./resources/demo5.png)
+![Demo1](./resources/demo6.png)
+![Demo1](./resources/demo7.png)
+![Demo1](./resources/demo8.png)
+![Demo1](./resources/demo8-1.png)
+![Demo1](./resources/demo9.png)
+![Demo1](./resources/demo10.png)
+![Demo1](./resources/demo11.png)
+![Demo1](./resources/demo12.png)
+
 
 ---
 ## Database records

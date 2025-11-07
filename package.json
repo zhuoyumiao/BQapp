@@ -5,8 +5,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "npm --prefix client install && npm --prefix client run build",
+    "start": "cd server && npm install && npm start",
     "start:server": "cd server && npm run start",
-    "start:client": "cd client && npm run dev",
-    "start": "echo 'Run `npm run start:server` and `npm run start:client` in separate shells'"
+    "start:client": "cd client && npm run dev"
   }
+  
 }
