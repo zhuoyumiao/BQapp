@@ -17,11 +17,16 @@ MONGODB_URI=<your Mongo connection string>
 DB_NAME=<your db name>
 
 # If dependencies exist (optional)
+cd server
 npm install
+cd client
+npm install
+
+# run server
+cd ..
 npm run start:server
 
-# If dependencies exist (optional)
-npm install
+# run client
 npm run start:client
 ```
 
