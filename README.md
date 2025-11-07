@@ -44,7 +44,7 @@ This project was created as part of the **CS5610 Web Development** course at Nor
 ---
 
 ## 📝 Resources:
-Website Link: 
+Website Link: https://bqapp-atbn.onrender.com
 Design document: https://docs.google.com/document/d/13b1pRa5lO_Lp83we7CcGD8SsMKdpSByGaRUvohujUd8/edit?usp=sharing  
 Link of video demonstration: 
 Demonstration slide:  
@@ -52,7 +52,20 @@ Demonstration slide:
 ---
 
 ## 📸 Demo
-![Demo1]()
+![Demo1](./resources/demo1.png)
+![Demo1](./resources/demo2.png)
+![Demo1](./resources/demo3.png)
+![Demo1](./resources/demo4.png)
+![Demo1](./resources/demo5.png)
+![Demo1](./resources/demo6.png)
+![Demo1](./resources/demo7.png)
+![Demo1](./resources/demo8.png)
+![Demo1](./resources/demo8-1.png)
+![Demo1](./resources/demo9.png)
+![Demo1](./resources/demo10.png)
+![Demo1](./resources/demo11.png)
+![Demo1](./resources/demo12.png)
+
 
 ---
 ## Database records
