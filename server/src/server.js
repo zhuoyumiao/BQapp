@@ -35,12 +35,12 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/practice', practiceRouter);
 app.use('/api/v1/attempts', attemptsRouter);
 
+// 404 for API
+app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }));
+
 app.get(/^(?!\/api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
 });
-
-// 404 for API
-app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }));
 
 // Global error handler
 app.use((err, _req, res, next) => {
