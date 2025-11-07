@@ -1,8 +1,11 @@
 # BQ App
+
 ## 🎯 Project Objective
-A Node + Express + Front-end rendering React with Hooks  + Mongo web app that helps users prepare for behavioral interviews (“BQ”) by practicing common questions across professional tracks. Users can log in, get a random interview question, type their answer, and compare it with a suggested answer to self-evaluate.
+
+A Node + Express + Front-end rendering React with Hooks + Mongo web app that helps users prepare for behavioral interviews (“BQ”) by practicing common questions across professional tracks. Users can log in, get a random interview question, type their answer, and compare it with a suggested answer to self-evaluate.
 
 ## 📥 Installation & Usage
+
 ```bash
 # Clone the repo
 git clone https://github.com/zhuoyumiao/BQapp.git
@@ -21,11 +24,13 @@ npm run start:server
 npm install
 npm run start:client
 ```
+
 ---
 
 ---
 
 ## ⚙️ Tech Requirements
+
 - HTML5, CSS3, JavaScript, Node, Express, Mongo, React
 - Node.js >= 20
 - ESLint + Prettier for code linting and formatting
@@ -34,24 +39,31 @@ npm run start:client
 ---
 
 ## 👩‍💻 Author & Link
+
 Author: Zhuoyu Miao & Muchen Qi
 
 ---
 
 ## 📚 Reference to the Class
+
 This project was created as part of the **CS5610 Web Development** course at Northeastern University. https://johnguerra.co/classes/webDevelopment_online_fall_2025/
 
 ---
 
 ## 📝 Resources:
+
 Website Link: https://bqapp-atbn.onrender.com
-Design document: https://docs.google.com/document/d/13b1pRa5lO_Lp83we7CcGD8SsMKdpSByGaRUvohujUd8/edit?usp=sharing  
-Link of video demonstration: 
-Demonstration slide:  
+
+Design document: https://docs.google.com/document/d/13b1pRa5lO_Lp83we7CcGD8SsMKdpSByGaRUvohujUd8/edit?usp=sharing
+
+Link of video demonstration:
+
+Demonstration slide: https://docs.google.com/presentation/d/1yPdMrg6ghoRJOeVwAYid0qSpqgIZcGdApc79RfqnqT0/edit?usp=sharing
 
 ---
 
 ## 📸 Demo
+
 ![Demo1](./resources/demo1.png)
 ![Demo1](./resources/demo2.png)
 ![Demo1](./resources/demo3.png)
@@ -66,24 +78,32 @@ Demonstration slide:
 ![Demo1](./resources/demo11.png)
 ![Demo1](./resources/demo12.png)
 
-
 ---
+
 ## Database records
-There are (100question + 100 * 4answers) + (20 * 25 attempt) + 20users = 1020 records in total
+
+There are (100question + 100 _ 4answers) + (20 _ 25 attempt) + 20users = 1020 records in total
 ![Database Screenshot1](./resources/database.png)
 
 ---
+
 ## CRUD operations
+
 User(Muchen Qi) and Question(Zhuoyu Miao) have CRUD operations supported.
 
 ---
-## Instructions to use 
+
+## Instructions to use
+
 ![Instructions Screenshot1](./resources/instruction.png)
 
 ## React Components (using hooks)
+
 Questions.jsx, QuestionDetail.jsx, AttemptDetail.jsx...
 
 ---
+
 ## 🤖 AI usage
+
 Used ChatGPT to help create useHashRoute.js. Used the GPT-5 and prompt "create useHashRoute file for frontend react app".
 Used ChatGPT to help generate sample answers. Used the GPT-5 and prompt "generate sample answers according to my questions".
