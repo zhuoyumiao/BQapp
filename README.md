@@ -56,7 +56,7 @@ Website Link: https://bqapp-atbn.onrender.com
 
 Design document: https://docs.google.com/document/d/13b1pRa5lO_Lp83we7CcGD8SsMKdpSByGaRUvohujUd8/edit?usp=sharing
 
-Link of video demonstration:
+Link of video demonstration: https://youtu.be/Gxh7GaRYKqA
 
 Demonstration slide: https://docs.google.com/presentation/d/1yPdMrg6ghoRJOeVwAYid0qSpqgIZcGdApc79RfqnqT0/edit?usp=sharing
 
