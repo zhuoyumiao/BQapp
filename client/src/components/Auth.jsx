@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { fetchJSON } from '../lib/http';
 
 export default function Auth({ onLogin }) {
@@ -53,7 +54,7 @@ export default function Auth({ onLogin }) {
           body: JSON.stringify({ email: regEmail, password: regPassword }),
         });
         if (typeof onLogin === 'function') await onLogin();
-      } catch (_) {}
+  } catch { void 0; }
 
       window.location.hash = '#/';
       setTimeout(() => window.location.reload(), 400);
@@ -67,7 +68,7 @@ export default function Auth({ onLogin }) {
   return (
     <div className="mx-auto" style={{ maxWidth: 920 }}>
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2 className="h4 mb-0">Sign in / Register</h2>
+        <h2 className="h4 mb-0">Login / Register</h2>
       </div>
 
       <ul className="nav nav-tabs mb-3">
@@ -200,3 +201,7 @@ export default function Auth({ onLogin }) {
     </div>
   );
 }
+
+Auth.propTypes = {
+  onLogin: PropTypes.func,
+};

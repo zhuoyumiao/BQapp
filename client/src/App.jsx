@@ -39,18 +39,6 @@ export default function App() {
     fetchMe();
   }, []);
 
-  async function handleLogout() {
-    try {
-      await fetchJSON('/api/v1/auth/logout', {
-        method: 'POST',
-        credentials: 'include',
-      });
-    } catch {}
-
-    window.location.href = '#/';
-    window.location.reload();
-  }
-
   return (
     <div className="container py-4">
       <header className="mb-4 border-bottom pb-3">

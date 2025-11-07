@@ -8,7 +8,8 @@ const router = Router();
 // Helper to strip sensitive fields
 function safeUser(user) {
   if (!user) return null;
-  const { passwordHash, ...safe } = user;
+  const safe = { ...user };
+  delete safe.passwordHash;
   return safe;
 }
 
@@ -97,7 +98,7 @@ router.get('/:id', requireAuth, async (req, res, next) => {
     let oid;
     try {
       oid = new ObjectId(id);
-    } catch (e) {
+    } catch {
       return res.status(400).json({ error: 'Invalid id' });
     }
 
@@ -125,7 +126,7 @@ router.put('/:id', requireAuth, async (req, res, next) => {
     let oid;
     try {
       oid = new ObjectId(id);
-    } catch (e) {
+    } catch {
       return res.status(400).json({ error: 'Invalid id' });
     }
 
@@ -173,7 +174,7 @@ router.delete('/:id', requireAuth, async (req, res, next) => {
     let oid;
     try {
       oid = new ObjectId(id);
-    } catch (e) {
+    } catch {
       return res.status(400).json({ error: 'Invalid id' });
     }
 

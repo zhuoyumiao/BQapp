@@ -54,18 +54,22 @@ async function main() {
   let attemptsPool = [];
   try {
     questions = await loadJson('questions.json');
-  } catch (e) {
+  } catch {
     console.warn('questions.json not found');
   }
   try {
     canonicalAnswers = await loadJson('answers_all.json');
-  } catch (e) {}
+  } catch {
+    void 0;
+  }
   try {
     users = await loadJson('users.json');
-  } catch (e) {}
+  } catch {
+    void 0;
+  }
   try {
     attemptsPool = await loadJson('attempts.json');
-  } catch (e) {
+  } catch {
     // Fall back to canonical answers content
     attemptsPool = (canonicalAnswers || [])
       .map((a) => (typeof a === 'string' ? a : a.content))
@@ -83,11 +87,15 @@ async function main() {
       { questionId: 1, type: 1, content: 1 },
       { unique: true, name: 'uq_answers_qid_type_content' }
     );
-  } catch (e) {}
+  } catch {
+    void 0;
+  }
   try {
     await attemptsColl.createIndex({ userId: 1 });
     await attemptsColl.createIndex({ questionId: 1 });
-  } catch (e) {}
+  } catch {
+    void 0;
+  }
 
   // Seed questions
   const idToObjectId = {};
@@ -132,7 +140,9 @@ async function main() {
           const { ObjectId } = await import('mongodb');
           if (ObjectId.isValid(a.questionId.$oid))
             qDoc = await questionsColl.findOne({ _id: new ObjectId(a.questionId.$oid) });
-        } catch (e) {}
+        } catch {
+          void 0;
+        }
       }
       if (!qDoc) continue;
       out.push({

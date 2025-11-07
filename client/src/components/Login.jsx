@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { fetchJSON } from '../lib/http';
 
 export default function Login({ onLogin }) {
@@ -23,7 +24,9 @@ export default function Login({ onLogin }) {
       if (typeof onLogin === 'function') {
         try {
           await onLogin();
-        } catch (e) {}
+        } catch {
+          void 0;
+        }
       }
       setSuccess('Logged in. Refreshing...');
       // Full page reload to ensure all app state and nav update correctly
@@ -93,3 +96,7 @@ export default function Login({ onLogin }) {
     </div>
   );
 }
+
+Login.propTypes = {
+  onLogin: PropTypes.func,
+};

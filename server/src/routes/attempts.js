@@ -102,7 +102,7 @@ router.post('/', async (req, res, next) => {
       else if (typeof questionId === 'object' && questionId._id) {
         try {
           qid = new ObjectId(questionId._id || questionId);
-        } catch (e) {
+        } catch {
           qid = null;
         }
       }

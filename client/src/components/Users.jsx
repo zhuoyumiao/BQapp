@@ -14,7 +14,7 @@ export default function Users() {
       try {
         const me = await fetchJSON('/api/v1/auth/me', { credentials: 'include' });
         setIsAdmin(Boolean(me?.user?.role === 'admin'));
-      } catch (e) {
+      } catch {
         setIsAdmin(false);
       }
     })();

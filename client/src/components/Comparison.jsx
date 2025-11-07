@@ -1,19 +1,11 @@
 import React from 'react';
 
-function fmtDate(d) {
-  try {
-    return new Date(d).toLocaleString();
-  } catch (e) {
-    return '';
-  }
-}
-
 export default function Comparison() {
   let payload = null;
   try {
     const raw = sessionStorage.getItem('comparePayload');
     payload = raw ? JSON.parse(raw) : null;
-  } catch (e) {
+  } catch {
     payload = null;
   }
 

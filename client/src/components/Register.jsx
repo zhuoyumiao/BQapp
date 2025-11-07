@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { fetchJSON } from '../lib/http';
 
 export default function Register({ onLogin }) {
@@ -34,9 +35,13 @@ export default function Register({ onLogin }) {
         if (typeof onLogin === 'function') {
           try {
             await onLogin();
-          } catch (e) {}
+          } catch {
+            void 0;
+          }
         }
-      } catch (_) {}
+      } catch {
+        void 0;
+      }
 
       setSuccess('Registered — redirecting to home...');
       // Navigate to home and reload
@@ -118,3 +123,7 @@ export default function Register({ onLogin }) {
     </div>
   );
 }
+
+Register.propTypes = {
+  onLogin: PropTypes.func,
+};

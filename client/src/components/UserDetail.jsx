@@ -26,7 +26,7 @@ export default function UserDetail({ id }) {
           const me = await fetchJSON('/api/v1/auth/me', { credentials: 'include' });
           setCurrentEmail(me?.user?.email || null);
           setIsAdminViewer(Boolean(me?.user?.role === 'admin'));
-        } catch (e) {
+        } catch {
           setCurrentEmail(null);
           setIsAdminViewer(false);
         }
@@ -121,7 +121,9 @@ export default function UserDetail({ id }) {
                       method: 'POST',
                       credentials: 'include',
                     });
-                  } catch (e) {}
+                  } catch {
+                    void 0;
+                  }
                   window.location.hash = '#/';
                   setTimeout(() => window.location.reload(), 200);
                 }}

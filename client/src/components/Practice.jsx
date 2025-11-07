@@ -58,7 +58,7 @@ export default function Practice() {
     try {
       sessionStorage.setItem('comparePayload', JSON.stringify(payload));
       window.location.hash = '#/compare';
-    } catch (e) {
+    } catch {
       setError('Could not store comparison data locally.');
     }
   }
@@ -128,7 +128,7 @@ export default function Practice() {
 
           <div>
             <small className="text-muted">
-              Click "Compare my answer" to view side-by-side comparison.
+              Click &quot;Compare my answer&quot; to view side-by-side comparison.
             </small>
           </div>
         </div>

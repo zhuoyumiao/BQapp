@@ -9,12 +9,14 @@ export async function attachUser(req, _res, next) {
         const uid = new ObjectId(req.session.userId);
         const user = await db.collection('users').findOne({ _id: uid });
         if (user) {
-          // Strip sensitive fields
-          const { passwordHash, ...safe } = user;
+          // Strip sensitive fields without creating an unused variable
+          const safe = { ...user };
+          delete safe.passwordHash;
           req.user = safe;
         }
-      } catch (e) {
+      } catch {
         // Invalid id
+        void 0;
       }
     }
     next();
