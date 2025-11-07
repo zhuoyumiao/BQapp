@@ -1,9 +1,10 @@
 // src/components/QuestionCard.jsx
-import React, { useMemo } from "react";
-import PropTypes from "prop-types";
+import React, { useMemo } from 'react';
+import '../../css/QuestionCard.css';
+import PropTypes from 'prop-types';
 
 export default function QuestionCard({ item }) {
-  const preview = useMemo(() => (item.body || "").slice(0, 160) + "...", [item.body]);
+  const preview = useMemo(() => (item.body || '').slice(0, 160) + '...', [item.body]);
 
   return (
     <div className="card q-card mb-3 shadow-sm">
@@ -12,8 +13,8 @@ export default function QuestionCard({ item }) {
           <a href={`#/q/${item._id}`}>{item.title}</a>
         </h5>
         <div className="text-muted small mb-2">
-          Tags: {Array.isArray(item.tags) ? item.tags.join(", ") : String(item.tags || "")}
-          {" · "}
+          Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
+          {' · '}
         </div>
         <p className="card-text">{preview}</p>
       </div>

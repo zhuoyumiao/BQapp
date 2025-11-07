@@ -54,7 +54,9 @@ export default function Auth({ onLogin }) {
           body: JSON.stringify({ email: regEmail, password: regPassword }),
         });
         if (typeof onLogin === 'function') await onLogin();
-  } catch { void 0; }
+      } catch {
+        void 0;
+      }
 
       window.location.hash = '#/';
       setTimeout(() => window.location.reload(), 400);

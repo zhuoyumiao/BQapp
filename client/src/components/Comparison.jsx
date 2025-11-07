@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../css/Comparison.css';
 
 export default function Comparison() {
   let payload = null;
@@ -49,9 +50,7 @@ export default function Comparison() {
       <div className="row">
         <div className="col-md-6">
           <h5>Your answer</h5>
-          <div className="border rounded p-3 mb-3" style={{ whiteSpace: 'pre-wrap' }}>
-            {userAnswer}
-          </div>
+          <div className="comparison-user-answer mb-3">{userAnswer}</div>
         </div>
 
         <div className="col-md-6">
@@ -65,8 +64,8 @@ export default function Comparison() {
                 {type} <small className="text-muted">({arr.length})</small>
               </h6>
               {arr.map((a) => (
-                <div key={a._id} className="border rounded p-2 mb-2">
-                  <div style={{ whiteSpace: 'pre-wrap' }}>{a.content}</div>
+                <div key={a._id} className="comparison-sample-answer mb-2">
+                  {a.content}
                 </div>
               ))}
             </div>

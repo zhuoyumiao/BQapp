@@ -93,11 +93,7 @@ header .btn {
   border-radius: 8px;
 }
 
-/* Comparison view */
-.small-muted {
-  color: var(--muted);
-}
-
+/* Small muted text */
 .small-muted {
   color: var(--muted);
 }
