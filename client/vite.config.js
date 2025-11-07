@@ -1,13 +1,22 @@
 // client/vite.config.js
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 5174,
     proxy: {
-      "/api": { target: "http://localhost:3000", changeOrigin: true },
+      '/api': { target: 'http://localhost:3000', changeOrigin: true },
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        instruction: resolve(__dirname, 'instruction.html'),
+      },
     },
   },
 });
