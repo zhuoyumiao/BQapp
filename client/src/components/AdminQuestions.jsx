@@ -1,15 +1,15 @@
 // src/components/AdminQuestions.jsx
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import PropTypes from "prop-types";
-import { fetchJSON } from "../lib/http";
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
+import { fetchJSON } from '../lib/http';
 
 function Row({ q, onDelete }) {
   return (
     <tr>
-      <td style={{ width: "45%" }}>
+      <td style={{ width: '45%' }}>
         <div className="fw-semibold">{q.title}</div>
         {Array.isArray(q.tags) && q.tags.length > 0 && (
-          <div className="small text-muted">Tags: {q.tags.join(", ")}</div>
+          <div className="small text-muted">Tags: {q.tags.join(', ')}</div>
         )}
       </td>
       <td className="text-end">
@@ -19,10 +19,7 @@ function Row({ q, onDelete }) {
         >
           Edit
         </a>
-        <button
-          className="btn btn-sm btn-outline-danger"
-          onClick={() => onDelete(q._id)}
-        >
+        <button className="btn btn-sm btn-outline-danger" onClick={() => onDelete(q._id)}>
           Delete
         </button>
       </td>
@@ -38,25 +35,21 @@ export default function AdminQuestions() {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const [err, setErr] = useState("");
+  const [err, setErr] = useState('');
   const pageSize = 20;
 
-  const totalPages = useMemo(
-    () => Math.max(1, Math.ceil(total / pageSize)),
-    [total]
-  );
+  const totalPages = useMemo(() => Math.max(1, Math.ceil(total / pageSize)), [total]);
 
   const load = useCallback(async (p = 1) => {
     try {
-      setErr("");
+      setErr('');
       const params = new URLSearchParams({
         page: String(p),
         limit: String(pageSize),
       });
-      const data = await fetchJSON(
-        `/api/v1/questions?${params.toString()}`,
-        { credentials: "include" } 
-      );
+      const data = await fetchJSON(`/api/v1/questions?${params.toString()}`, {
+        credentials: 'include',
+      });
       setItems(Array.isArray(data.items) ? data.items : []);
       setTotal(Number(data.total || 0));
       setPage(Number(data.page || 1));
@@ -67,15 +60,15 @@ export default function AdminQuestions() {
   }, []);
 
   useEffect(() => {
-    load(1); 
+    load(1);
   }, [load]);
 
   const onDelete = async (id) => {
-    if (!confirm("Delete this question?")) return;
+    if (!confirm('Delete this question?')) return;
     try {
       await fetchJSON(`/api/v1/questions/${id}`, {
-        method: "DELETE",
-        credentials: "include",
+        method: 'DELETE',
+        credentials: 'include',
       });
       await load(page);
     } catch (e) {

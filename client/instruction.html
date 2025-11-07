@@ -1,153 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How to Use Behavioral Questions Practice</title>
+    <script src="/js/config.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>How to Use Behavioral Questions Practice</title>
-  <script src="/js/config.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-</head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+      <div id="navMount" class="w-100"></div>
+    </nav>
 
-<body class="bg-light">
-  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
-    <div id="navMount" class="w-100"></div>
-  </nav>
+    <main class="container py-4">
+      <header class="mb-4">
+        <h1 class="h3 mb-2">Getting Started</h1>
+        <p class="text-muted mb-0">
+          Follow these steps to search behavioral questions, view sample answers, and manage your
+          own submissions (attempts).
+        </p>
+      </header>
 
-  <main class="container py-4">
-    <header class="mb-4">
-      <h1 class="h3 mb-2">Getting Started</h1>
-      <p class="text-muted mb-0">
-        Follow these steps to search behavioral questions, view sample answers, and manage your own submissions (attempts).
-      </p>
-    </header>
-
-    <div class="row g-3">
-      <!-- 1. Sign in  -->
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="badge bg-primary rounded-pill px-3 py-2">1</span>
-              <h2 class="h5 mb-0">Sign Up or Sign In</h2>
+      <div class="row g-3">
+        <!-- 1. Sign in  -->
+        <div class="col-12">
+          <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-primary rounded-pill px-3 py-2">1</span>
+                <h2 class="h5 mb-0">Sign Up or Sign In</h2>
+              </div>
+              <ol class="mb-0 ps-3">
+                <li>
+                  Go to <a href="/#/register">Sign Up</a> to create an account, or
+                  <a href="/#/login">Sign In</a> if you already have one.
+                </li>
+                <li>
+                  Not using auth yet? You can still browse questions and answers. Saving your
+                  attempts to <em>Submissions</em> may require sign-in later.
+                </li>
+              </ol>
             </div>
-            <ol class="mb-0 ps-3">
-              <li>Go to <a href="/#/register">Sign Up</a> to create an account, or <a href="/#/login">Sign In</a> if you already have one.</li>
-              <li>Not using auth yet? You can still browse questions and answers. Saving your attempts to <em>Submissions</em> may require sign-in later.</li>
-            </ol>
+          </div>
+        </div>
+
+        <!-- 2. Browse & Search Questions -->
+        <div class="col-12">
+          <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-primary rounded-pill px-3 py-2">2</span>
+                <h2 class="h5 mb-0">Browse & Search Questions</h2>
+              </div>
+              <ol class="mb-0 ps-3">
+                <li>Go to the <a href="/#/">Questions</a> page (homepage of the app).</li>
+                <li>
+                  Use the search bar to filter by <strong>Keywords</strong> and
+                  <strong>Tags</strong>. For example, try keywords <code>leadership</code> and tags
+                  <code>conflict, communication</code>.
+                </li>
+                <li>
+                  Click <strong>Search</strong> to fetch matching questions. Use
+                  <strong>Prev</strong>/<strong>Next</strong> to navigate pages.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. View Question Detail & Sample Answers -->
+        <div class="col-12">
+          <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-primary rounded-pill px-3 py-2">3</span>
+                <h2 class="h5 mb-0">Open Question Detail & Read Sample Answers</h2>
+              </div>
+              <ol class="mb-0 ps-3">
+                <li>Click a question title to open its detail page.</li>
+                <li>
+                  Use <strong>Show answers</strong> to show suggestion answers (e.g.,
+                  <em>student</em>, <em>experience</em>, <em>pm</em>, <em>sales</em>). Click again
+                  to hide.
+                </li>
+                <li>
+                  Read the body of the question and refer to sample answers for structure and
+                  phrasing ideas.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Write & Submit Your Attempt -->
+        <div class="col-12">
+          <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-primary rounded-pill px-3 py-2">4</span>
+                <h2 class="h5 mb-0">Practice</h2>
+              </div>
+              <ol class="mb-0 ps-3">
+                <li>
+                  Go to the <a href="/#/practice">Practice</a> page. There is a random question.
+                </li>
+                <li>Draft your answer (e.g., following STAR: Situation–Task–Action–Result).</li>
+                <li>
+                  Click <strong>Compare my answer</strong> to compare your answer with the sample
+                  answer or <strong>Clear</strong> to clear your answer.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. View All Submissions -->
+        <div class="col-12">
+          <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-primary rounded-pill px-3 py-2">5</span>
+                <h2 class="h5 mb-0">View All Your Submissions</h2>
+              </div>
+              <ol class="mb-0 ps-3">
+                <li>
+                  Open <a href="/#/submissions">Submissions</a> to see a paged list of your
+                  attempts.
+                </li>
+                <li>Click an item (or <strong>View Question</strong>) to view the full details.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Attempt Detail -->
+        <div class="col-12">
+          <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-primary rounded-pill px-3 py-2">6</span>
+                <h2 class="h5 mb-0">Open Attempt Detail</h2>
+              </div>
+              <ol class="mb-0 ps-3">
+                <li>
+                  On the attempt page, you’ll see:
+                  <ul class="mt-2">
+                    <li>
+                      <strong>Question</strong>: title, body, tags (with a button to view the
+                      original question page).
+                    </li>
+                    <li>
+                      <strong>Your Submission</strong>: your full answer text, plus timestamp.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Use <strong>View on Question Page</strong> to jump back and compare with
+                  suggestion answers if needed.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Tips -->
+        <div class="col-12">
+          <div class="card shadow-sm border-0 rounded-4 h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <span class="badge bg-primary rounded-pill px-3 py-2">7</span>
+                <h2 class="h5 mb-0">Tips for Better Practice</h2>
+              </div>
+              <ul class="mb-0 ps-3">
+                <li>
+                  Keep attempts concise and structured (STAR). Focus on your actions and measurable
+                  outcomes.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+    </main>
 
-      <!-- 2. Browse & Search Questions -->
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="badge bg-primary rounded-pill px-3 py-2">2</span>
-              <h2 class="h5 mb-0">Browse & Search Questions</h2>
-            </div>
-            <ol class="mb-0 ps-3">
-              <li>Go to the <a href="/#/">Questions</a> page (homepage of the app).</li>
-              <li>Use the search bar to filter by <strong>Keywords</strong> and <strong>Tags</strong>.
-                For example, try keywords <code>leadership</code> and tags <code>conflict, communication</code>.</li>
-              <li>Click <strong>Search</strong> to fetch matching questions. Use <strong>Prev</strong>/<strong>Next</strong> to navigate pages.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. View Question Detail & Sample Answers -->
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="badge bg-primary rounded-pill px-3 py-2">3</span>
-              <h2 class="h5 mb-0">Open Question Detail & Read Sample Answers</h2>
-            </div>
-            <ol class="mb-0 ps-3">
-              <li>Click a question title to open its detail page.</li>
-              <li>Use <strong>Show answers</strong> to show suggestion answers (e.g., <em>student</em>, <em>experience</em>, <em>pm</em>, <em>sales</em>). Click again to hide.</li>
-              <li>Read the body of the question and refer to sample answers for structure and phrasing ideas.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Write & Submit Your Attempt -->
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="badge bg-primary rounded-pill px-3 py-2">4</span>
-              <h2 class="h5 mb-0">Practice</h2>
-            </div>
-            <ol class="mb-0 ps-3">
-              <li>Go to the <a href="/#/practice">Practice</a> page. There is a random question.</li>
-              <li>Draft your answer (e.g., following STAR: Situation–Task–Action–Result).</li>
-              <li>Click <strong>Compare my answer</strong> to compare your answer with the sample answer or <strong>Clear</strong> to clear your answer.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. View All Submissions -->
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="badge bg-primary rounded-pill px-3 py-2">5</span>
-              <h2 class="h5 mb-0">View All Your Submissions</h2>
-            </div>
-            <ol class="mb-0 ps-3">
-              <li>Open <a href="/#/submissions">Submissions</a> to see a paged list of your attempts.</li>
-              <li>Click an item (or <strong>View Question</strong>) to view the full details.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. Attempt Detail -->
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="badge bg-primary rounded-pill px-3 py-2">6</span>
-              <h2 class="h5 mb-0">Open Attempt Detail</h2>
-            </div>
-            <ol class="mb-0 ps-3">
-              <li>On the attempt page, you’ll see:
-                <ul class="mt-2">
-                  <li><strong>Question</strong>: title, body, tags (with a button to view the original question page).</li>
-                  <li><strong>Your Submission</strong>: your full answer text, plus timestamp.</li>
-                </ul>
-              </li>
-              <li>Use <strong>View on Question Page</strong> to jump back and compare with suggestion answers if needed.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. Tips -->
-      <div class="col-12">
-        <div class="card shadow-sm border-0 rounded-4 h-100">
-          <div class="card-body">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="badge bg-primary rounded-pill px-3 py-2">7</span>
-              <h2 class="h5 mb-0">Tips for Better Practice</h2>
-            </div>
-            <ul class="mb-0 ps-3">
-              <li>Keep attempts concise and structured (STAR). Focus on your actions and measurable outcomes.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

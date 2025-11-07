@@ -10,5 +10,4 @@
     "start:server": "cd server && npm run start",
     "start:client": "cd client && npm run dev"
   }
-  
 }

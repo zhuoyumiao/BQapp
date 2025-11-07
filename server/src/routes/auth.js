@@ -20,10 +20,10 @@ router.post('/login', async (req, res, next) => {
     // set session
     req.session.userId = String(user._id);
 
-  // Copy and remove passwordHash to avoid creating an unused binding
-  const safe = { ...user };
-  delete safe.passwordHash;
-  res.json({ user: safe });
+    // Copy and remove passwordHash to avoid creating an unused binding
+    const safe = { ...user };
+    delete safe.passwordHash;
+    res.json({ user: safe });
   } catch (err) {
     next(err);
   }

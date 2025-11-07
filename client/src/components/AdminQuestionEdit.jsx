@@ -1,20 +1,20 @@
 // src/components/AdminQuestionEdit.jsx
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import QuestionForm from "./QuestionForm";
-import { fetchJSON } from "../lib/http";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import QuestionForm from './QuestionForm';
+import { fetchJSON } from '../lib/http';
 
 export default function AdminQuestionEdit({ id }) {
   const [initial, setInitial] = useState(null);
-  const [err, setErr] = useState("");
+  const [err, setErr] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
-        setErr("");
+        setErr('');
         const q = await fetchJSON(`/api/v1/questions/${id}`, {
-          credentials: "include",      
+          credentials: 'include',
         });
         setInitial(q);
       } catch (e) {
@@ -28,15 +28,15 @@ export default function AdminQuestionEdit({ id }) {
 
   const onSubmit = async (payload) => {
     setSubmitting(true);
-    setErr("");
+    setErr('');
     try {
       await fetchJSON(`/api/v1/questions/${id}`, {
-        method: "PUT",
-        credentials: "include",         
-        headers: { "Content-Type": "application/json" },
+        method: 'PUT',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      window.location.hash = "#/admin/questions";
+      window.location.hash = '#/admin/questions';
     } catch (e) {
       setErr(String(e?.message || e));
     } finally {
