@@ -48,11 +48,20 @@ export default function UserDetail({ id }) {
       const body = { name: form.name };
       if (form.email) body.email = form.email;
       if (form.password) body.password = form.password;
-      if (form.role) body.role = form.role;
-      const updated = await fetchJSON(`/api/v1/users/${id}`, {
+
+      let updated = await fetchJSON(`/api/v1/users/${id}`, {
         method: 'PUT',
         body: JSON.stringify(body),
       });
+
+      const roleChanged = isAdminViewer && form.role && form.role !== user.role;
+      if (roleChanged) {
+        updated = await fetchJSON(`/api/v1/users/${id}/role`, {
+          method: 'PATCH',
+          body: JSON.stringify({ role: form.role }),
+        });
+      }
+
       setUser(updated);
       setForm((f) => ({ ...f, password: '' }));
       setEditing(false);
