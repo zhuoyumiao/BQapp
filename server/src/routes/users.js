@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import { getDB, ObjectId } from '../db/connect.js';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
@@ -13,11 +13,11 @@ function safeUser(user) {
   return safe;
 }
 
-// Create a user
+// Create a user (self-service registration; always user role)
 router.post('/', async (req, res, next) => {
   try {
     const db = getDB();
-    const { name, email, password, role = 'user' } = req.body || {};
+    const { name, email, password } = req.body || {};
     if (!name || !email || !password) {
       return res.status(400).json({ error: 'name, email and password required' });
     }
@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
     const doc = {
       name,
       email: emailNorm,
-      role,
+      role: 'user',
       passwordHash,
       createdAt: now,
     };
@@ -43,7 +43,9 @@ router.post('/', async (req, res, next) => {
     const { insertedId } = await db.collection('users').insertOne(doc);
 
     // Return safe user object
-    res.status(201).json({ _id: insertedId, name, email: emailNorm, role, createdAt: now });
+    res
+      .status(201)
+      .json({ _id: insertedId, name, email: emailNorm, role: 'user', createdAt: now });
   } catch (err) {
     next(err);
   }
@@ -134,13 +136,11 @@ router.put('/:id', requireAuth, async (req, res, next) => {
     const isOwner = String(me._id) === String(oid);
     if (!isOwner && me.role !== 'admin') return res.status(403).json({ error: 'Forbidden' });
 
-    const { name, email, password, role } = req.body || {};
+    const { name, email, password } = req.body || {};
     const update = {};
     if (name) update.name = name;
     if (email) update.email = String(email).trim().toLowerCase();
     if (password) update.passwordHash = await bcrypt.hash(password, 10);
-    // Role can only be changed by admin
-    if (role && me.role === 'admin') update.role = role;
 
     // If email changed, ensure uniqueness
     if (update.email) {
@@ -158,6 +158,35 @@ router.put('/:id', requireAuth, async (req, res, next) => {
       .findOneAndUpdate({ _id: oid }, { $set: update }, { returnDocument: 'after' });
     if (!resu.value) return res.status(404).json({ error: 'Not found' });
     res.json(safeUser(resu.value));
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Admin-only endpoint to change a user's role
+router.patch('/:id/role', requireRole('admin'), async (req, res, next) => {
+  try {
+    const db = getDB();
+    const { id } = req.params;
+    let oid;
+    try {
+      oid = new ObjectId(id);
+    } catch {
+      return res.status(400).json({ error: 'Invalid id' });
+    }
+
+    const roleRaw = typeof req.body?.role === 'string' ? req.body.role.trim() : '';
+    if (!roleRaw) return res.status(400).json({ error: 'role is required' });
+    const allowedRoles = ['user', 'admin'];
+    if (!allowedRoles.includes(roleRaw)) {
+      return res.status(400).json({ error: 'Invalid role' });
+    }
+
+    const updated = await db
+      .collection('users')
+      .findOneAndUpdate({ _id: oid }, { $set: { role: roleRaw } }, { returnDocument: 'after' });
+    if (!updated.value) return res.status(404).json({ error: 'Not found' });
+    res.json(safeUser(updated.value));
   } catch (err) {
     next(err);
   }
