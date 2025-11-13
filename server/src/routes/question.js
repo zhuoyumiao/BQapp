@@ -5,6 +5,20 @@ import { requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
+function normalizeArrayField(val) {
+  if (!val) return [];
+  if (Array.isArray(val)) {
+    return val.map((s) => String(s).trim()).filter(Boolean);
+  }
+  if (typeof val === 'string') {
+    return val
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+  return [];
+}
+
 // get all the questions with search and pagination
 router.get('/', async (req, res, next) => {
   try {
@@ -60,13 +74,16 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', requireRole('admin'), async (req, res, next) => {
   try {
     const db = getDB();
-    const { title, body, tags = [] } = req.body || {};
+    const { title, body } = req.body || {};
+    const tags = normalizeArrayField(req.body?.tags);
+    const company = normalizeArrayField(req.body?.company);
     if (!title || !body) return res.status(400).json({ error: 'title/body required' });
     const now = new Date();
     const doc = {
       title,
       body,
       tags,
+      company,
       createdAt: now,
       updatedAt: now,
     };
@@ -86,11 +103,14 @@ router.put('/:id', requireRole('admin'), async (req, res, next) => {
       return res.status(400).json({ error: 'Invalid ID format' });
     }
 
-    const { title, body, tags } = req.body || {};
+    const { title, body } = req.body || {};
     const update = {};
     if (title !== undefined) update.title = title;
     if (body !== undefined) update.body = body;
-    if (tags !== undefined) update.tags = tags;
+    if (req.body && Object.prototype.hasOwnProperty.call(req.body, 'tags'))
+      update.tags = normalizeArrayField(req.body.tags);
+    if (req.body && Object.prototype.hasOwnProperty.call(req.body, 'company'))
+      update.company = normalizeArrayField(req.body.company);
     update.updatedAt = new Date();
 
     if (Object.keys(update).length === 1) {

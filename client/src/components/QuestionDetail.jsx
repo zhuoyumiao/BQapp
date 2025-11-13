@@ -49,6 +49,7 @@ export default function QuestionDetail({ id }) {
 
   if (err) return <div className="alert alert-danger">{err}</div>;
   if (!item) return <div className="text-muted">Loading...</div>;
+  const companies = Array.isArray(item.company) ? item.company : [];
 
   const btnLabel = expanded
     ? 'Hide answers'
@@ -61,6 +62,11 @@ export default function QuestionDetail({ id }) {
       <h3>{item.title}</h3>
       <div className="text-muted small mb-3">
         Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
+        {companies.length > 0 && (
+          <>
+            {' · '}Companies: {companies.join(', ')}
+          </>
+        )}
       </div>
 
       <p style={{ whiteSpace: 'pre-wrap' }}>{item.body}</p>

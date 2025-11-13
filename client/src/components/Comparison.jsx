@@ -44,6 +44,11 @@ export default function Comparison() {
         <div className="card-body">
           <h5 className="card-title">{question.title}</h5>
           <p className="card-text">{question.body}</p>
+          {Array.isArray(question.company) && question.company.length > 0 && (
+            <p className="card-text text-muted small mb-0">
+              Companies: {question.company.join(', ')}
+            </p>
+          )}
         </div>
       </div>
 
