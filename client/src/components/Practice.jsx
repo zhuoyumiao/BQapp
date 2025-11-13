@@ -99,6 +99,15 @@ export default function Practice() {
                   ))}
                 </p>
               )}
+              {Array.isArray(question.company) && question.company.length > 0 && (
+                <p className="mb-0 mt-2">
+                  {question.company.map((c) => (
+                    <span key={c} className="badge bg-dark-subtle text-dark me-1">
+                      {c}
+                    </span>
+                  ))}
+                </p>
+              )}
             </div>
           </div>
 

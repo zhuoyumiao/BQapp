@@ -29,6 +29,7 @@ export default function AttemptDetail({ id }) {
   const qTitle = q.title || attempt.questionTitle || '(No title)';
   const qBody = q.body || attempt.questionBody || '';
   const qTags = Array.isArray(q.tags) && q.tags.length ? q.tags.join(', ') : '';
+  const qCompanies = Array.isArray(q.company) && q.company.length ? q.company.join(', ') : '';
 
   const toQuestionHref = attempt.questionId ? `#/q/${attempt.questionId}` : null;
 
@@ -59,6 +60,7 @@ export default function AttemptDetail({ id }) {
             {qBody}
           </div>
           {qTags && <div className="mt-2 small text-muted">Tags: {qTags}</div>}
+          {qCompanies && <div className="mt-1 small text-muted">Companies: {qCompanies}</div>}
         </div>
       </div>
 
