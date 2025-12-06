@@ -49,8 +49,8 @@ export default function App() {
           <a className="btn btn-sm btn-outline-primary" href="#/">
             Home
           </a>
-          <a className="btn btn-sm btn-outline-info" href="#/practice">
-            Practice
+          <a className="btn btn-sm btn-outline-danger" href="#/practice">
+            Random Practice
           </a>
 
           {user && (

@@ -1,5 +1,4 @@
 {
-  "eslintConfig": "./eslint.config.js",
   "name": "bqapp",
   "version": "1.0.0",
   "type": "module",
@@ -11,5 +10,9 @@
     "start:server": "cd server && npm run start",
     "start:client": "cd client && npm run dev",
     "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^9.39.1",
+    "prettier": "^3.7.4"
   }
 }

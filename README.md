@@ -107,7 +107,9 @@ User(Muchen Qi) and Question(Zhuoyu Miao) have CRUD operations supported.
 
 Questions.jsx, QuestionDetail.jsx, AttemptDetail.jsx...
 
----
+## Usability Report
+
+https://docs.google.com/document/d/1rMZvf8cGGINKWit7XsCMiMC-6uxYadj72-zo4NImtOU/edit?usp=sharing
 
 ## 🤖 AI usage
 
