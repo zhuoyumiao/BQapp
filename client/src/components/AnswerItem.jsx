@@ -1,4 +1,3 @@
-// src/components/AnswerItem.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -20,8 +19,10 @@ export default function AnswerItem({ ans }) {
   return (
     <div className="card mb-3">
       <div className="card-body">
-        <span className={`badge me-2 text-uppercase ${badgeClass}`}>{ans.type || 'answer'}</span>
-        {created && <span className="text-muted small">{created}</span>}
+        <div className="d-flex align-items-center gap-2">
+          <span className={`badge text-uppercase ${badgeClass}`}>{ans.type || 'answer'}</span>
+          {created && <span className="text-muted small">{created}</span>}
+        </div>
         <p className="mt-2 mb-0" style={{ whiteSpace: 'pre-wrap' }}>
           {ans.content}
         </p>

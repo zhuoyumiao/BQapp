@@ -19,6 +19,7 @@ DB_NAME=<your db name>
 # If dependencies exist (optional)
 cd server
 npm install
+cd ..
 cd client
 npm install
 

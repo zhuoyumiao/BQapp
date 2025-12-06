@@ -57,7 +57,7 @@ export default function Login({ onLogin }) {
   return (
     <div className="card mx-auto" style={{ maxWidth: 520 }}>
       <div className="card-body">
-        <h2 className="h5">Login</h2>
+        <h2 className="h5 mb-3">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Email</label>

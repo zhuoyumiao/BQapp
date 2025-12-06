@@ -1,4 +1,3 @@
-// src/components/Questions.jsx
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { fetchJSON } from '../lib/http';
 import QuestionCard from './QuestionCard';
@@ -43,7 +42,7 @@ export default function Questions() {
       {items.map((it) => (
         <QuestionCard key={it._id} item={it} />
       ))}
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 mt-4">
         <button
           className="btn btn-outline-secondary"
           disabled={page <= 1}

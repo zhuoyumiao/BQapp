@@ -28,7 +28,7 @@ export default function Comparison() {
 
   return (
     <div>
-      <div className="d-flex justify-content-between align-items-start mb-3">
+      <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Comparison</h2>
         <div>
           <a className="btn btn-sm btn-outline-secondary me-2" href="#/practice">
@@ -48,21 +48,22 @@ export default function Comparison() {
       </div>
 
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4">
           <h5>Your answer</h5>
           <div className="comparison-user-answer mb-3">{userAnswer}</div>
         </div>
 
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4">
           <h5>Sample answers</h5>
           {Object.keys(answersByType).length === 0 && (
             <div className="text-muted">No sample answers available.</div>
           )}
           {Object.entries(answersByType).map(([type, arr]) => (
             <div key={type} className="mb-3">
-              <h6 className="mb-2 text-capitalize">
+              <h6 className="comparison-sample-title text-capitalize">
                 {type} <small className="text-muted">({arr.length})</small>
               </h6>
+
               {arr.map((a) => (
                 <div key={a._id} className="comparison-sample-answer mb-2">
                   {a.content}

@@ -65,7 +65,7 @@ export default function Practice() {
 
   return (
     <div>
-      <div className="d-flex justify-content-between align-items-start mb-3">
+      <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Practice</h2>
         <div>
           <button

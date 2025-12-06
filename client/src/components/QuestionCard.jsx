@@ -12,7 +12,7 @@ export default function QuestionCard({ item }) {
         <h5 className="card-title">
           <a href={`#/q/${item._id}`}>{item.title}</a>
         </h5>
-        <div className="text-muted small mb-2">
+        <div className="text-muted small mb-3">
           Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
           {' · '}
         </div>

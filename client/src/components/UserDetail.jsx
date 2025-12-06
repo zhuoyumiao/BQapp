@@ -21,7 +21,6 @@ export default function UserDetail({ id }) {
         const u = await fetchJSON(`/api/v1/users/${id}`);
         setUser(u);
         setForm({ name: u.name || '', email: u.email || '', password: '', role: u.role || 'user' });
-        // Fetch current user
         try {
           const me = await fetchJSON('/api/v1/auth/me', { credentials: 'include' });
           setCurrentEmail(me?.user?.email || null);
@@ -75,6 +74,7 @@ export default function UserDetail({ id }) {
 
   if (err) return <div className="alert alert-danger">{err}</div>;
   if (loading || !user) return <div className="text-muted">Loading...</div>;
+
   const cancelEdit = () => {
     setForm({
       name: user.name || '',
@@ -92,14 +92,14 @@ export default function UserDetail({ id }) {
 
       {!editing ? (
         <div className="mt-3">
-          <div className="mb-2">
+          <div className="mb-3">
             <strong>Name:</strong> {user.name}
           </div>
-          <div className="mb-2">
+          <div className="mb-3">
             <strong>Email:</strong> {user.email}
           </div>
           {isAdminViewer && (
-            <div className="mb-2">
+            <div className="mb-3">
               <strong>Role:</strong> {user.role}
             </div>
           )}

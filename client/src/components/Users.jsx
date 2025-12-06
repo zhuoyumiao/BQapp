@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchJSON } from '../lib/http';
+import './../../css/Users.css';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -9,17 +10,19 @@ export default function Users() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    // Fetch current user to know if we should show search (admin only)
-    (async () => {
+    async function getMe() {
       try {
         const me = await fetchJSON('/api/v1/auth/me', { credentials: 'include' });
-        setIsAdmin(Boolean(me?.user?.role === 'admin'));
+        setIsAdmin(me?.user?.role === 'admin');
       } catch {
         setIsAdmin(false);
       }
-    })();
+    }
+    getMe();
+  }, []);
 
-    (async () => {
+  useEffect(() => {
+    async function loadUsers() {
       try {
         setErr('');
         setLoading(true);
@@ -31,18 +34,20 @@ export default function Users() {
       } finally {
         setLoading(false);
       }
-    })();
+    }
+    loadUsers();
   }, [q]);
 
   return (
     <div>
       <div className="d-flex mb-3 align-items-center">
-        <h3 className="me-auto">User Profile</h3>
+        <h3 className="me-auto mb-0">User Profile</h3>
         {isAdmin && (
-          <div className="input-group" style={{ maxWidth: 360 }}>
+          <div className="input-group input-group-narrow">
             <input
               className="form-control"
               placeholder="search name or email"
+              aria-label="Search users by name or email"
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
@@ -53,13 +58,13 @@ export default function Users() {
         )}
       </div>
 
-      {err && <div className="alert alert-danger">{err}</div>}
-
-      {loading && <div className="text-muted">Loading...</div>}
-
-      {!loading && users.length === 0 && (
-        <div className="alert alert-secondary">No users found.</div>
-      )}
+      <div className="mb-3">
+        {err && <div className="alert alert-danger">{err}</div>}
+        {loading && <div className="text-muted">Loading...</div>}
+        {!loading && users.length === 0 && (
+          <div className="alert alert-secondary">No users found.</div>
+        )}
+      </div>
 
       <div className="list-group">
         {users.map((u) => (

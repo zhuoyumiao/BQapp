@@ -85,7 +85,7 @@ export default function AdminQuestions() {
         </a>
       </div>
 
-      {err && <div className="alert alert-danger">{err}</div>}
+      {err && <div className="alert alert-danger mt-2">{err}</div>}
 
       <div className="table-responsive">
         <table className="table align-middle">
@@ -110,7 +110,7 @@ export default function AdminQuestions() {
         </table>
       </div>
 
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 mt-3">
         <button
           className="btn btn-outline-secondary"
           disabled={page <= 1}

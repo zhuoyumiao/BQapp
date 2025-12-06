@@ -43,7 +43,7 @@ export default function Submissions() {
         <AttemptCard key={it._id} item={it} />
       ))}
 
-      <div className="d-flex gap-2">
+      <div className="d-flex gap-2 mt-3">
         <button
           className="btn btn-outline-secondary"
           disabled={page <= 1}

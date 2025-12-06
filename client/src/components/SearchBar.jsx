@@ -38,7 +38,9 @@ export default function SearchBar({ q, setQ, tags, setTags, onSearch }) {
         />
       </div>
       <div className="col-md-2 d-grid">
-        <label className="form-label mb-1">&nbsp;</label>
+        <label className="form-label mb-1" style={{ visibility: 'hidden' }}>
+          Label
+        </label>
         <button className="btn btn-primary" type="submit">
           Search
         </button>

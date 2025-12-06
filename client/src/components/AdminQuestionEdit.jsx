@@ -48,7 +48,7 @@ export default function AdminQuestionEdit({ id }) {
     <div>
       <h2 className="h5 mb-3">Edit Question</h2>
 
-      {err && <div className="alert alert-danger">{err}</div>}
+      {err && <div className="alert alert-danger mt-2">{err}</div>}
 
       <QuestionForm initial={initial} onSubmit={onSubmit} submitting={submitting} />
     </div>

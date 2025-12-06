@@ -73,7 +73,7 @@ export default function Register({ onLogin }) {
   return (
     <div className="card mx-auto" style={{ maxWidth: 540 }}>
       <div className="card-body">
-        <h2 className="h5">Register</h2>
+        <h2 className="h5 mb-3">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Full name</label>

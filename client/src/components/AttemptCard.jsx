@@ -19,12 +19,10 @@ export default function AttemptCard({ item }) {
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-start">
           <div>
-            <h5 className="card-title mb-1">
-              <div className="text-muted small">
-                {created}
-                {mins}
-              </div>
-            </h5>
+            <div className="text-muted small mb-1">
+              {created}
+              {mins}
+            </div>
           </div>
           {item.questionId && (
             <a

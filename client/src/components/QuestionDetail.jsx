@@ -63,7 +63,7 @@ export default function QuestionDetail({ id }) {
         Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
       </div>
 
-      <p style={{ whiteSpace: 'pre-wrap' }}>{item.body}</p>
+      <p className="mb-4" style={{ whiteSpace: 'pre-wrap' }}>{item.body}</p>
 
       <hr className="my-4" />
 

@@ -58,12 +58,11 @@ export default function QuestionForm({ initial, onSubmit, submitting }) {
           required
         />
       </div>
-      <div className="row g-3">
-        <div className="col-md-6">
-          <label className="form-label">Tags (comma separated)</label>
-          <input className="form-control" value={tags} onChange={(e) => setTags(e.target.value)} />
-        </div>
+      <div>
+        <label className="form-label">Tags (comma separated)</label>
+        <input className="form-control" value={tags} onChange={(e) => setTags(e.target.value)} />
       </div>
+
       <div className="d-flex gap-2">
         <button className="btn btn-primary" type="submit" disabled={submitting}>
           {submitting ? 'Saving…' : 'Save'}

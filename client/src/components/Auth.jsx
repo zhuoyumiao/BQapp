@@ -7,11 +7,9 @@ export default function Auth({ onLogin }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Login fields
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // Register fields
   const [name, setName] = useState('');
   const [regEmail, setRegEmail] = useState('');
   const [regPassword, setRegPassword] = useState('');
@@ -46,7 +44,6 @@ export default function Auth({ onLogin }) {
         credentials: 'include',
         body: JSON.stringify({ name, email: regEmail, password: regPassword }),
       });
-      // Auto-login
       try {
         await fetchJSON('/api/v1/auth/login', {
           method: 'POST',
@@ -57,7 +54,6 @@ export default function Auth({ onLogin }) {
       } catch {
         void 0;
       }
-
       window.location.hash = '#/';
       setTimeout(() => window.location.reload(), 400);
     } catch (err) {
@@ -70,7 +66,7 @@ export default function Auth({ onLogin }) {
   return (
     <div className="mx-auto" style={{ maxWidth: 920 }}>
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2 className="h4 mb-0">Login / Register</h2>
+        <h2 className="h4 mb-3">Login / Register</h2>
       </div>
 
       <ul className="nav nav-tabs mb-3">
@@ -92,10 +88,10 @@ export default function Auth({ onLogin }) {
         </li>
       </ul>
 
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && <div className="alert alert-danger mt-2">{error}</div>}
 
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4">
           {mode === 'login' && (
             <div className="card">
               <div className="card-body">
@@ -188,7 +184,7 @@ export default function Auth({ onLogin }) {
           )}
         </div>
 
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">Why sign up?</h5>

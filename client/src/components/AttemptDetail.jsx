@@ -38,7 +38,7 @@ export default function AttemptDetail({ id }) {
         <a className="btn btn-outline-secondary btn-sm" href="#/submissions">
           Back
         </a>
-        <div className="mb-0">
+        <div className="text-muted small">
           {createdText}
           {mins}
         </div>

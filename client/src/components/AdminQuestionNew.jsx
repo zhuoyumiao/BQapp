@@ -29,7 +29,7 @@ export default function AdminQuestionNew() {
     <div>
       <h2 className="h5 mb-3">New Question</h2>
 
-      {err && <div className="alert alert-danger">{err}</div>}
+      {err && <div className="alert alert-danger mt-2">{err}</div>}
 
       <QuestionForm onSubmit={onSubmit} submitting={submitting} />
     </div>
