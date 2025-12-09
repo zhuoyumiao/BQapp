@@ -55,7 +55,7 @@ export default function UserDetail({ id }) {
       });
       setEditing(false);
       setTimeout(() => window.location.reload(), 100);
-    } catch (e) {
+    } catch {
       setEditing(false);
       setTimeout(() => window.location.reload(), 100);
     } finally {
