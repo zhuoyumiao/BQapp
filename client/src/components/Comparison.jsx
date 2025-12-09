@@ -34,9 +34,6 @@ export default function Comparison() {
           <a className="btn btn-sm btn-cancel me-2" href="#/practice">
             Back to Practice
           </a>
-          <a className="btn btn-sm btn-outline-primary" href="#/">
-            Home
-          </a>
         </div>
       </div>
 

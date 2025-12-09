@@ -26,7 +26,7 @@ export default function AttemptCard({ item }) {
           </div>
           {item.questionId && (
             <a
-              className="btn btn-sm btn-outline-primary"
+              className="btn btn-sm btn-primary"
               href={`#/attempt/${item._id}#view-question`}
             >
               View Question

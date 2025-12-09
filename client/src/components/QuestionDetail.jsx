@@ -74,7 +74,7 @@ export default function QuestionDetail({ id }) {
 
       <hr className="my-4" />
 
-      <button className="btn btn-outline-primary" onClick={toggleAnswers} disabled={ansLoading}>
+      <button className="btn btn-primary" onClick={toggleAnswers} disabled={ansLoading}>
         {ansLoading ? 'Loading...' : btnLabel}
       </button>
 

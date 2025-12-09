@@ -69,7 +69,7 @@ export default function Practice() {
         <h3>Practice</h3>
         <div>
           <button
-            className="btn btn-primary me-2"
+            className="btn btn-success me-2"
             onClick={loadRandom}
             disabled={loading}
           >
@@ -77,7 +77,7 @@ export default function Practice() {
           </button>
           <button
             type="button"
-            className="btn btn-success me-2"
+            className="btn btn-primary me-2"
             onClick={() => { window.location.hash = '#/'; }}
           >
             View All Questions

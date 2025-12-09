@@ -60,10 +60,10 @@ export default function App() {
           )}
           {!loadingUser && isAdmin && (
             <>
-              <a className="btn btn-sm btn-outline-info" href="#/users">
+              <a className="btn btn-sm btn-info" href="#/users">
                 Users
               </a>
-              <a className="btn btn-sm btn-outline-danger" href="#/admin/questions">
+              <a className="btn btn-sm btn-danger" href="#/admin/questions">
                 Admin
               </a>
             </>
@@ -71,13 +71,13 @@ export default function App() {
 
           <div className="ms-auto d-flex align-items-center gap-2">
             {user && (
-              <a className="btn btn-sm btn-soft-peach" href={`#/user/${user._id}`}>
+              <a className="btn btn-sm btn-primary" href={`#/user/${user._id}`}>
                 Profile
               </a>
             )}
 
             {!loadingUser && !user && (
-              <a className="btn btn-sm btn-soft-peach" href="#/auth">
+              <a className="btn btn-sm btn-primary" href="#/auth">
                 Sign in
               </a>
             )}

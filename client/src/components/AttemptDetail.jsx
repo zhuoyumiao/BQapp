@@ -49,7 +49,7 @@ export default function AttemptDetail({ id }) {
           <div className="d-flex justify-content-between align-items-start">
             <h5 className="card-title mb-0">Question</h5>
             {toQuestionHref && (
-              <a className="btn btn-sm btn-outline-primary" href={toQuestionHref}>
+              <a className="btn btn-sm btn-primary" href={toQuestionHref}>
                 View on Question Page
               </a>
             )}

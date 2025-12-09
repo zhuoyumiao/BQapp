@@ -14,7 +14,7 @@ function Row({ q, onDelete }) {
       </td>
       <td className="text-end">
         <a
-          className="btn btn-sm btn-outline-secondary me-2"
+          className="btn btn-sm btn-primary me-2"
           href={`#/admin/questions/${q._1d}/edit`}
         >
           Edit
@@ -112,14 +112,14 @@ export default function AdminQuestions() {
 
       <div className="d-flex gap-2 mt-3">
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-secondary"
           disabled={page <= 1}
           onClick={() => load(page - 1)}
         >
           Prev
         </button>
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-secondary"
           disabled={page >= totalPages}
           onClick={() => load(page + 1)}
         >
