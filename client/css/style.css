@@ -128,14 +128,14 @@ header .btn {
   filter: brightness(0.96);
 }
 
-.btn-soft-yellow {
+.btn-soft-peach {
   background: var(--coral-peach) !important;
   color: #000000 !important;
   border: none !important;
   font-weight: 600 !important;
 }
-.btn-soft-yellow:hover,
-.btn-soft-yellow:focus {
+.btn-soft-peach:hover,
+.btn-soft-peach:focus {
   filter: brightness(0.92);
   color: #fff !important;
 }

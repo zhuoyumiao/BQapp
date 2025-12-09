@@ -71,13 +71,13 @@ export default function App() {
 
           <div className="ms-auto d-flex align-items-center gap-2">
             {user && (
-              <a className="btn btn-sm btn-soft-yellow" href={`#/user/${user._id}`}>
+              <a className="btn btn-sm btn-soft-peach" href={`#/user/${user._id}`}>
                 Profile
               </a>
             )}
 
             {!loadingUser && !user && (
-              <a className="btn btn-sm btn-soft-yellow" href="#/auth">
+              <a className="btn btn-sm btn-soft-peach" href="#/auth">
                 Sign in
               </a>
             )}
