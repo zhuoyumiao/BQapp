@@ -78,11 +78,6 @@ Demonstration slide: https://docs.google.com/presentation/d/1yPdMrg6ghoRJOeVwAYi
 ![Demo1](./resources/demo6.png)
 ![Demo1](./resources/demo7.png)
 ![Demo1](./resources/demo8.png)
-![Demo1](./resources/demo8-1.png)
-![Demo1](./resources/demo9.png)
-![Demo1](./resources/demo10.png)
-![Demo1](./resources/demo11.png)
-![Demo1](./resources/demo12.png)
 
 ---
 
