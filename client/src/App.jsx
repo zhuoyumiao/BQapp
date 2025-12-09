@@ -71,19 +71,19 @@ export default function App() {
 
           <div className="ms-auto d-flex align-items-center gap-2">
             {user && (
-              <a className="btn btn-sm btn-outline-primary" href={`#/user/${user._id}`}>
+              <a className="btn btn-sm btn-soft-yellow" href={`#/user/${user._id}`}>
                 Profile
               </a>
             )}
 
             {!loadingUser && !user && (
-              <a className="btn btn-sm btn-outline-primary" href="#/auth">
+              <a className="btn btn-sm btn-soft-yellow" href="#/auth">
                 Sign in
               </a>
             )}
 
             <a
-              className="btn btn-sm btn-outline-secondary"
+              className="btn btn-sm btn-secondary"
               href="/instruction.html"
               target="_blank"
             >
@@ -93,33 +93,35 @@ export default function App() {
         </div>
       </header>
 
-      {route.name === 'list' && <Questions />}
-      {route.name === 'detail' && <QuestionDetail id={route.id} />}
-      {route.name === 'users' &&
-        (loadingUser ? (
-          <div>Loading...</div>
-        ) : isAdmin ? (
-          <Users />
-        ) : (
-          <div className="alert alert-danger">Not authorized</div>
-        ))}
-      {route.name === 'practice' && <Practice />}
-      {route.name === 'compare' && <Comparison />}
-      {route.name === 'userDetail' && <UserDetail id={route.id} />}
-      {route.name === 'auth' && <Auth onLogin={fetchMe} />}
-      {route.name === 'login' && <Login />}
-      {route.name === 'register' && <Register />}
-      {route.name === 'submissions' && <Submissions />}
-      {route.name === 'attemptDetail' && <AttemptDetail id={route.id} />}
+      <main>
+        {route.name === 'list' && <Questions />}
+        {route.name === 'detail' && <QuestionDetail id={route.id} />}
+        {route.name === 'users' &&
+          (loadingUser ? (
+            <div>Loading...</div>
+          ) : isAdmin ? (
+            <Users />
+          ) : (
+            <div className="alert alert-danger">Not authorized</div>
+          ))}
+        {route.name === 'practice' && <Practice />}
+        {route.name === 'compare' && <Comparison />}
+        {route.name === 'userDetail' && <UserDetail id={route.id} />}
+        {route.name === 'auth' && <Auth onLogin={fetchMe} />}
+        {route.name === 'login' && <Login />}
+        {route.name === 'register' && <Register />}
+        {route.name === 'submissions' && <Submissions />}
+        {route.name === 'attemptDetail' && <AttemptDetail id={route.id} />}
 
-      {route.name === 'adminQuestions' &&
-        (loadingUser ? <div>Loading...</div> : <AdminQuestions />)}
+        {route.name === 'adminQuestions' &&
+          (loadingUser ? <div>Loading...</div> : <AdminQuestions />)}
 
-      {route.name === 'adminNewQuestion' &&
-        (loadingUser ? <div>Loading...</div> : <AdminQuestionNew />)}
+        {route.name === 'adminNewQuestion' &&
+          (loadingUser ? <div>Loading...</div> : <AdminQuestionNew />)}
 
-      {route.name === 'adminEditQuestion' &&
-        (loadingUser ? <div>Loading...</div> : <AdminQuestionEdit id={route.id} />)}
+        {route.name === 'adminEditQuestion' &&
+          (loadingUser ? <div>Loading...</div> : <AdminQuestionEdit id={route.id} />)}
+      </main>
     </div>
   );
 }

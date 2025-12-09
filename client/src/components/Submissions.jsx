@@ -42,14 +42,14 @@ export default function Submissions() {
 
       <div className="d-flex gap-2 mt-3">
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-secondary"
           disabled={page <= 1}
           onClick={() => load(page - 1)}
         >
           Prev
         </button>
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-secondary"
           disabled={page >= totalPages}
           onClick={() => load(page + 1)}
         >

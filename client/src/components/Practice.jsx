@@ -69,15 +69,19 @@ export default function Practice() {
         <h3>Practice</h3>
         <div>
           <button
-            className="btn btn-outline-primary me-2"
+            className="btn btn-primary me-2"
             onClick={loadRandom}
             disabled={loading}
           >
             New Question
           </button>
-          <a className="btn btn-outline-success me-2" href="#/">
+          <button
+            type="button"
+            className="btn btn-success me-2"
+            onClick={() => { window.location.hash = '#/'; }}
+          >
             View All Questions
-          </a>
+          </button>
         </div>
       </div>
 
@@ -88,7 +92,7 @@ export default function Practice() {
         <div>
           <div className="card mb-3">
             <div className="card-body">
-              <h5 className="card-title">{question.title}</h5>
+              <h4 className="card-title">{question.title}</h4>
               <p className="card-text">{question.body}</p>
               {question.tags && (
                 <p className="mb-0">

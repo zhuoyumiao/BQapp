@@ -9,6 +9,7 @@
   --danger: #dc3545;
   --info: #0aa7bf;
   --cancel: #6c757d;
+  --coral-peach: #ff9a8b;
   --radius: 12px;
   --container-max: 1100px;
 }
@@ -98,24 +99,15 @@ header .btn {
   padding: 0.45rem 0.75rem;
 }
 
-.btn-info {
-  color: #fff !important;
-  background-color: #0aa7bf;
-  border-color: #0aa7bf;
-}
-
 .btn-approve {
-  background: transparent !important;
-  color: var(--success) !important;
-  border: 1px solid var(--success) !important;
+  background: var(--success) !important;
+  color: #fff !important;
+  border: none !important;
   font-weight: 700 !important;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 .btn-approve:hover,
 .btn-approve:focus {
-  background: var(--success) !important;
-  color: #fff !important;
-  border-color: var(--success) !important;
+  filter: brightness(0.95);
 }
 
 .btn-destructive {
@@ -126,17 +118,26 @@ header .btn {
 .btn-destructive:hover { filter: brightness(0.94); }
 
 .btn-cancel {
-  background: transparent !important;
-  color: var(--cancel) !important;
-  border: 1px solid var(--cancel) !important;
+  background: var(--cancel) !important;
+  color: #fff !important;
+  border: none !important;
   font-weight: 600 !important;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 .btn-cancel:hover,
 .btn-cancel:focus {
-  background: var(--cancel) !important;
+  filter: brightness(0.96);
+}
+
+.btn-soft-yellow {
+  background: var(--coral-peach) !important;
+  color: #000000 !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+.btn-soft-yellow:hover,
+.btn-soft-yellow:focus {
+  filter: brightness(0.92);
   color: #fff !important;
-  border-color: var(--cancel) !important;
 }
 
 /* Header spacing and emphasis */

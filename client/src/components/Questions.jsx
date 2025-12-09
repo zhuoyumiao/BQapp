@@ -47,14 +47,14 @@ export default function Questions() {
       ))}
       <div className="d-flex gap-2 mt-4">
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-secondary"
           disabled={page <= 1}
           onClick={() => fetchData(page - 1)}
         >
           Prev
         </button>
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-secondary"
           disabled={page >= totalPages}
           onClick={() => fetchData(page + 1)}
         >
