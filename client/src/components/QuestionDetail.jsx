@@ -58,7 +58,7 @@ export default function QuestionDetail({ id }) {
     <div>
       <button
         type="button"
-        className="btn btn-cancel btn-sm mb-2"
+        className="btn btn-cancel btn-sm mb-4"
         onClick={() => window.history.back()}
       >
         Back to Questions

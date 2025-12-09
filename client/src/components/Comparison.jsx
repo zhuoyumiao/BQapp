@@ -28,7 +28,7 @@ export default function Comparison() {
 
   return (
     <div>
-      <a className="btn btn-sm btn-cancel mb-2" href="#/practice">
+      <a className="btn btn-sm btn-cancel mb-4" href="#/practice">
         Back to Practice
       </a>
       <h2 className="mb-3">Comparison</h2>
