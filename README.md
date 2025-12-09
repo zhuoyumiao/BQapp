@@ -111,6 +111,15 @@ Questions.jsx, QuestionDetail.jsx, AttemptDetail.jsx...
 
 https://docs.google.com/document/d/1rMZvf8cGGINKWit7XsCMiMC-6uxYadj72-zo4NImtOU/edit?usp=sharing
 
+## Colors
+
+The app uses a semantic and consistent color system to ensure clarity and usability:
+
+- Blue (Primary): Used for general navigation and standard actions such as Home, Users, Profile, and Search. It represents reliability and professionalism.
+- Green (Secondary): Used for primary task actions like Random Practice and Submissions, indicating progress and positive action.
+- Red (Semantic): Reserved for high-risk administrative actions (Admin) to prevent accidental misuse.
+- Gray (Secondary/Informational): Used for secondary actions such as Instructions.
+
 ## 🤖 AI usage
 
 Used ChatGPT to help create useHashRoute.js. Used the GPT-5 and prompt "create useHashRoute file for frontend react app".

@@ -49,7 +49,7 @@ export default function App() {
           <a className="btn btn-sm btn-primary" href="#/">
             Home
           </a>
-          <a className="btn btn-sm btn-success" href="#/practice">
+          <a className="btn btn-sm btn-success text-nowrap" href="#/practice">
             Random Practice
           </a>
 
@@ -69,7 +69,7 @@ export default function App() {
             </>
           )}
 
-          <div className="ms-auto d-flex align-items-center gap-2">
+          <div className="ms-auto d-flex align-items-center gap-3">
             {user && (
               <a className="btn btn-sm btn-primary" href={`#/user/${user._id}`}>
                 Profile
@@ -82,11 +82,7 @@ export default function App() {
               </a>
             )}
 
-            <a
-              className="btn btn-sm btn-secondary"
-              href="/instruction.html"
-              target="_blank"
-            >
+            <a className="btn btn-sm btn-secondary" href="/instruction.html" target="_blank">
               Instructions
             </a>
           </div>
