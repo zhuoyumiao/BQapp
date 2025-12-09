@@ -55,7 +55,7 @@ header .btn {
 .site-title a {
   font-weight: 800;
   font-size: clamp(22px, 3.6vw, 36px);
-  background: linear-gradient(90deg, #10b981 0%, #0ea5e9 100%);
+  background: linear-gradient(90deg, #10b981 0%, #0d6efd 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -94,16 +94,10 @@ header .btn {
   box-shadow: 0 6px 14px rgba(12, 23, 40, 0.08);
 }
 
-.btn-primary {
-  font-weight: 700;
-  padding: 0.45rem 0.75rem;
-}
-
 .btn-approve {
   background: var(--success) !important;
   color: #fff !important;
   border: none !important;
-  font-weight: 700 !important;
 }
 .btn-approve:hover,
 .btn-approve:focus {
@@ -121,23 +115,10 @@ header .btn {
   background: var(--cancel) !important;
   color: #fff !important;
   border: none !important;
-  font-weight: 600 !important;
 }
 .btn-cancel:hover,
 .btn-cancel:focus {
   filter: brightness(0.96);
-}
-
-.btn-soft-peach {
-  background: var(--coral-peach) !important;
-  color: #000000 !important;
-  border: none !important;
-  font-weight: 600 !important;
-}
-.btn-soft-peach:hover,
-.btn-soft-peach:focus {
-  filter: brightness(0.92);
-  color: #fff !important;
 }
 
 /* Header spacing and emphasis */

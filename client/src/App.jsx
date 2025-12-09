@@ -49,7 +49,7 @@ export default function App() {
           <a className="btn btn-sm btn-primary" href="#/">
             Home
           </a>
-          <a className="btn btn-sm btn-info" href="#/practice">
+          <a className="btn btn-sm btn-success" href="#/practice">
             Random Practice
           </a>
 
@@ -60,7 +60,7 @@ export default function App() {
           )}
           {!loadingUser && isAdmin && (
             <>
-              <a className="btn btn-sm btn-info" href="#/users">
+              <a className="btn btn-sm btn-primary" href="#/users">
                 Users
               </a>
               <a className="btn btn-sm btn-danger" href="#/admin/questions">

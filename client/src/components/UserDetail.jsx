@@ -18,7 +18,7 @@ export default function UserDetail({ id }) {
       try {
         setErr('');
         setLoading(true);
-        const u = await fetchJSON(`/api/v1/users/${id}`);
+        const u = await fetchJSON(`/api/v1/users/${id}`, { credentials: 'include' });
         setUser(u);
         setForm({ name: u.name || '', email: u.email || '', password: '', role: u.role || 'user' });
         try {
@@ -50,6 +50,7 @@ export default function UserDetail({ id }) {
       if (form.role) body.role = form.role;
       const updated = await fetchJSON(`/api/v1/users/${id}`, {
         method: 'PUT',
+        credentials: 'include',
         body: JSON.stringify(body),
       });
       setUser(updated);
@@ -61,11 +62,10 @@ export default function UserDetail({ id }) {
       setSaving(false);
     }
   };
-
   const remove = async () => {
     if (!confirm('Delete this user? This cannot be undone.')) return;
     try {
-      await fetchJSON(`/api/v1/users/${id}`, { method: 'DELETE' });
+      await fetchJSON(`/api/v1/users/${id}`, { method: 'DELETE', credentials: 'include' });
       window.location.hash = '#/users';
     } catch (e) {
       setErr(String(e?.message || e));
