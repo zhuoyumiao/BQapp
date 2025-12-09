@@ -64,10 +64,10 @@ export default function QuestionForm({ initial, onSubmit, submitting }) {
       </div>
 
       <div className="d-flex gap-2">
-        <button className="btn btn-primary" type="submit" disabled={submitting}>
+        <button className="btn btn-approve" type="submit" disabled={submitting}>
           {submitting ? 'Saving…' : 'Save'}
         </button>
-        <a className="btn btn-outline-secondary" href="#/admin/questions">
+        <a className="btn btn-cancel" href="#/admin/questions">
           Cancel
         </a>
       </div>

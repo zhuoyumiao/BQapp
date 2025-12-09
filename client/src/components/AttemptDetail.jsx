@@ -35,7 +35,7 @@ export default function AttemptDetail({ id }) {
   return (
     <div>
       <div className="d-flex align-items-center gap-2 mb-3">
-        <a className="btn btn-outline-secondary btn-sm" href="#/submissions">
+        <a className="btn btn-cancel btn-sm" href="#/submissions">
           Back
         </a>
         <div className="text-muted small">

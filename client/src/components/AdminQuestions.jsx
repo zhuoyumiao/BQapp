@@ -15,11 +15,11 @@ function Row({ q, onDelete }) {
       <td className="text-end">
         <a
           className="btn btn-sm btn-outline-secondary me-2"
-          href={`#/admin/questions/${q._id}/edit`}
+          href={`#/admin/questions/${q._1d}/edit`}
         >
           Edit
         </a>
-        <button className="btn btn-sm btn-outline-danger" onClick={() => onDelete(q._id)}>
+        <button className="btn btn-sm btn-destructive" onClick={() => onDelete(q._id)}>
           Delete
         </button>
       </td>

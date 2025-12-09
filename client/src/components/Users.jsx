@@ -51,7 +51,7 @@ export default function Users() {
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
-            <button className="btn btn-outline-secondary" onClick={() => setQ('')}>
+            <button className="btn btn-cancel" onClick={() => setQ('')}>
               Clear
             </button>
           </div>

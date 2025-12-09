@@ -27,10 +27,7 @@ export default function Submissions() {
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between mb-3">
-        <h2 className="h5 mb-0">My Submissions</h2>
-        <a className="btn btn-outline-secondary btn-sm" href="#/">
-          Back to Questions
-        </a>
+        <h2>My Submissions</h2>
       </div>
 
       <div className="text-muted mb-3">

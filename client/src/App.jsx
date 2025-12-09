@@ -46,15 +46,15 @@ export default function App() {
           <h1 className="h3 mb-0 site-title">
             <a href="#/">Behavioral Questions</a>
           </h1>
-          <a className="btn btn-sm btn-outline-primary" href="#/">
+          <a className="btn btn-sm btn-primary" href="#/">
             Home
           </a>
-          <a className="btn btn-sm btn-outline-danger" href="#/practice">
+          <a className="btn btn-sm btn-info" href="#/practice">
             Random Practice
           </a>
 
           {user && (
-            <a className="btn btn-sm btn-outline-success" href="#/submissions">
+            <a className="btn btn-sm btn-success" href="#/submissions">
               Submissions
             </a>
           )}
@@ -71,13 +71,13 @@ export default function App() {
 
           <div className="ms-auto d-flex align-items-center gap-2">
             {user && (
-              <a className="btn btn-sm btn-outline-dark" href={`#/user/${user._id}`}>
+              <a className="btn btn-sm btn-outline-primary" href={`#/user/${user._id}`}>
                 Profile
               </a>
             )}
 
             {!loadingUser && !user && (
-              <a className="btn btn-sm btn-outline-dark" href="#/auth">
+              <a className="btn btn-sm btn-outline-primary" href="#/auth">
                 Sign in
               </a>
             )}

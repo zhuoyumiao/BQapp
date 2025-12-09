@@ -104,7 +104,7 @@ export default function UserDetail({ id }) {
             </div>
           )}
 
-          <div className="d-flex gap-2 mt-3">
+          <div className="d-flex gap-2">
             {currentEmail === user.email && (
               <button type="button" className="btn btn-primary" onClick={() => setEditing(true)}>
                 Edit
@@ -114,7 +114,7 @@ export default function UserDetail({ id }) {
             {currentEmail === user.email && (
               <button
                 type="button"
-                className="btn btn-outline-danger"
+                className="btn btn-destructive"
                 onClick={async () => {
                   try {
                     await fetchJSON('/api/v1/auth/logout', {
@@ -131,10 +131,6 @@ export default function UserDetail({ id }) {
                 Logout
               </button>
             )}
-
-            <a className="btn btn-secondary" href="#/">
-              Back
-            </a>
           </div>
         </div>
       ) : (
@@ -169,14 +165,19 @@ export default function UserDetail({ id }) {
           {err && <div className="alert alert-danger">{err}</div>}
 
           <div className="d-flex gap-2">
-            <button className="btn btn-primary" type="submit" disabled={saving}>
+            <button className="btn btn-approve" type="submit" disabled={saving}>
               {saving ? 'Saving...' : 'Save'}
             </button>
-            <button type="button" className="btn btn-danger" onClick={remove}>
-              Delete Account
-            </button>
-            <button type="button" className="btn btn-secondary" onClick={cancelEdit}>
+            <button type="button" className="btn btn-cancel" onClick={cancelEdit}>
               Cancel
+            </button>
+          </div>
+
+          <div className="mt-4">
+            <div className="text-danger fw-bold">Danger zone</div>
+            <div className="text-muted small mb-2">Deleting your account is permanent and cannot be undone.</div>
+            <button type="button" className="btn btn-destructive" onClick={remove}>
+              Delete Account
             </button>
           </div>
         </form>

@@ -31,7 +31,7 @@ export default function Comparison() {
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Comparison</h2>
         <div>
-          <a className="btn btn-sm btn-outline-secondary me-2" href="#/practice">
+          <a className="btn btn-sm btn-cancel me-2" href="#/practice">
             Back to Practice
           </a>
           <a className="btn btn-sm btn-outline-primary" href="#/">

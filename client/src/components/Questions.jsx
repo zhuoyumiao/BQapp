@@ -35,6 +35,9 @@ export default function Questions() {
 
   return (
     <div>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h2>Questions</h2>
+      </div>
       <SearchBar q={q} setQ={setQ} tags={tags} setTags={setTags} onSearch={() => fetchData(1)} />
       <div className="text-muted mb-3">
         Total <strong>{total}</strong> · Page {page} / {totalPages}

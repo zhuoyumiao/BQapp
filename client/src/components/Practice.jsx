@@ -69,14 +69,14 @@ export default function Practice() {
         <h2>Practice</h2>
         <div>
           <button
-            className="btn btn-sm btn-outline-secondary me-2"
+            className="btn btn-outline-primary me-2"
             onClick={loadRandom}
             disabled={loading}
           >
             New Question
           </button>
-          <a className="btn btn-sm btn-outline-primary" href="#/">
-            Back
+          <a className="btn btn-outline-success me-2" href="#/">
+            View All Questions
           </a>
         </div>
       </div>
@@ -121,7 +121,7 @@ export default function Practice() {
             >
               Compare my answer
             </button>
-            <button className="btn btn-outline-secondary" onClick={() => setUserAnswer('')}>
+            <button className="btn btn-cancel" onClick={() => setUserAnswer('')}>
               Clear
             </button>
           </div>

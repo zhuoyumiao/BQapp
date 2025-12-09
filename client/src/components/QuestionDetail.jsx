@@ -29,9 +29,11 @@ export default function QuestionDetail({ id }) {
 
   // toggle function
   const toggleAnswers = async () => {
-    setExpanded((prev) => !prev);
+    const willExpand = !expanded;
+    setExpanded(willExpand);
 
-    if (!ansLoaded && !ansLoading) {
+    // only load answers when expanding (not when collapsing)
+    if (willExpand && !ansLoaded && !ansLoading) {
       try {
         setAnsLoading(true);
         setAnsError('');
@@ -50,15 +52,20 @@ export default function QuestionDetail({ id }) {
   if (err) return <div className="alert alert-danger">{err}</div>;
   if (!item) return <div className="text-muted">Loading...</div>;
 
-  const btnLabel = expanded
-    ? 'Hide answers'
-    : ansLoaded
-      ? `Show answers (${answers.length})`
-      : 'Show answers';
+  const btnLabel = expanded ? 'Hide answers' : 'Show answers';
 
   return (
     <div>
-      <h3>{item.title}</h3>
+      <div className="d-flex align-items-start justify-content-between mb-2">
+        <h3 className="mb-0">{item.title}</h3>
+        <button
+          type="button"
+          className="btn btn-cancel"
+          onClick={() => window.history.back()}
+        >
+          Back
+        </button>
+      </div>
       <div className="text-muted small mb-3">
         Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
       </div>
