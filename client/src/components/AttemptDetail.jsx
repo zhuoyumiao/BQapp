@@ -34,14 +34,12 @@ export default function AttemptDetail({ id }) {
 
   return (
     <div>
-      <div className="d-flex align-items-center gap-2 mb-3">
-        <a className="btn btn-cancel btn-sm" href="#/submissions">
-          Back
-        </a>
-        <div className="text-muted small">
-          {createdText}
-          {mins}
-        </div>
+      <a className="btn btn-cancel btn-sm mb-2" href="#/submissions">
+        Back to Submissions
+      </a>
+      <div className="text-muted small mb-3">
+        {createdText}
+        {mins}
       </div>
 
       <div className="card mb-4 shadow-sm border-0">

@@ -56,16 +56,14 @@ export default function QuestionDetail({ id }) {
 
   return (
     <div>
-      <div className="d-flex align-items-start justify-content-between mb-2">
-        <h3 className="mb-0">{item.title}</h3>
-        <button
-          type="button"
-          className="btn btn-cancel"
-          onClick={() => window.history.back()}
-        >
-          Back
-        </button>
-      </div>
+      <button
+        type="button"
+        className="btn btn-cancel btn-sm mb-2"
+        onClick={() => window.history.back()}
+      >
+        Back to Questions
+      </button>
+      <h3 className="mb-2">{item.title}</h3>
       <div className="text-muted small mb-3">
         Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
       </div>

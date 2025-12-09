@@ -28,14 +28,10 @@ export default function Comparison() {
 
   return (
     <div>
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Comparison</h2>
-        <div>
-          <a className="btn btn-sm btn-cancel me-2" href="#/practice">
-            Back to Practice
-          </a>
-        </div>
-      </div>
+      <a className="btn btn-sm btn-cancel mb-2" href="#/practice">
+        Back to Practice
+      </a>
+      <h2 className="mb-3">Comparison</h2>
 
       <div className="card mb-3">
         <div className="card-body">
