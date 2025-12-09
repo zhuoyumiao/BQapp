@@ -61,7 +61,7 @@ export default function QuestionDetail({ id }) {
         className="btn btn-cancel btn-sm mb-4"
         onClick={() => window.history.back()}
       >
-        Back to Questions
+        ← Back
       </button>
       <h3 className="mb-2">{item.title}</h3>
       <div className="text-muted small mb-3">

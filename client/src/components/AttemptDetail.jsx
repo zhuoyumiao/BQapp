@@ -35,7 +35,7 @@ export default function AttemptDetail({ id }) {
   return (
     <div>
       <a className="btn btn-cancel btn-sm mb-4" href="#/submissions">
-        Back to Submissions
+        ← Back
       </a>
       <div className="text-muted small mb-3">
         {createdText}
