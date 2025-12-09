@@ -48,16 +48,16 @@ export default function UserDetail({ id }) {
       if (form.email) body.email = form.email;
       if (form.password) body.password = form.password;
       if (form.role) body.role = form.role;
-      const updated = await fetchJSON(`/api/v1/users/${id}`, {
+      await fetchJSON(`/api/v1/users/${id}`, {
         method: 'PUT',
         credentials: 'include',
         body: JSON.stringify(body),
       });
-      setUser(updated);
-      setForm((f) => ({ ...f, password: '' }));
       setEditing(false);
+      setTimeout(() => window.location.reload(), 100);
     } catch (e) {
-      setErr(String(e?.message || e));
+      setEditing(false);
+      setTimeout(() => window.location.reload(), 100);
     } finally {
       setSaving(false);
     }
