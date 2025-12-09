@@ -68,7 +68,7 @@ Demonstration slide: https://docs.google.com/presentation/d/1yPdMrg6ghoRJOeVwAYi
 
 ---
 
-## 📸 Demo
+## 📸 Demo(Branch: final-iteration)
 
 ![Demo1](./resources/demo1.png)
 ![Demo1](./resources/demo2.png)
@@ -78,12 +78,14 @@ Demonstration slide: https://docs.google.com/presentation/d/1yPdMrg6ghoRJOeVwAYi
 ![Demo1](./resources/demo6.png)
 ![Demo1](./resources/demo7.png)
 ![Demo1](./resources/demo8.png)
+![Demo1](./resources/demo9.png)
+![Demo1](./resources/demo10.png)
 
 ---
 
 ## Database records
 
-There are (100question + 100 _ 4answers) + (20 _ 25 attempt) + 20users = 1020 records in total
+There are (100question + 100 X 4answers) + (20 X 25 attempt) + 20users = 1020 records in total
 ![Database Screenshot1](./resources/database.png)
 
 ---

@@ -8,14 +8,12 @@ export default function QuestionDetail({ id }) {
   const [item, setItem] = useState(null);
   const [err, setErr] = useState('');
 
-  // toggle answers and lazy loading
   const [expanded, setExpanded] = useState(false);
   const [answers, setAnswers] = useState([]);
   const [ansLoading, setAnsLoading] = useState(false);
   const [ansLoaded, setAnsLoaded] = useState(false);
   const [ansError, setAnsError] = useState('');
 
-  // load question
   useEffect(() => {
     (async () => {
       try {
@@ -27,12 +25,10 @@ export default function QuestionDetail({ id }) {
     })();
   }, [id]);
 
-  // toggle function
   const toggleAnswers = async () => {
     const willExpand = !expanded;
     setExpanded(willExpand);
 
-    // only load answers when expanding (not when collapsing)
     if (willExpand && !ansLoaded && !ansLoading) {
       try {
         setAnsLoading(true);
@@ -55,7 +51,7 @@ export default function QuestionDetail({ id }) {
   const btnLabel = expanded ? 'Hide answers' : 'Show answers';
 
   return (
-    <div>
+    <div className="container">
       <button
         type="button"
         className="btn btn-cancel btn-sm mb-4"
@@ -63,12 +59,16 @@ export default function QuestionDetail({ id }) {
       >
         ← Back
       </button>
-      <h3 className="mb-2">{item.title}</h3>
+
+      <h2 className="mb-2">{item.title}</h2>
+
       <div className="text-muted small mb-3">
         Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
       </div>
 
-      <p className="mb-4" style={{ whiteSpace: 'pre-wrap' }}>{item.body}</p>
+      <p className="mb-4" style={{ whiteSpace: 'pre-wrap' }}>
+        {item.body}
+      </p>
 
       <hr className="my-4" />
 

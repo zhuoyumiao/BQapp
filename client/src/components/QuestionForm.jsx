@@ -40,8 +40,11 @@ export default function QuestionForm({ initial, onSubmit, submitting }) {
   return (
     <form onSubmit={submit} className="vstack gap-3">
       <div>
-        <label className="form-label">Title</label>
+        <label htmlFor="title" className="form-label">
+          Title
+        </label>
         <input
+          id="title"
           className="form-control"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -49,8 +52,11 @@ export default function QuestionForm({ initial, onSubmit, submitting }) {
         />
       </div>
       <div>
-        <label className="form-label">Body</label>
+        <label htmlFor="body" className="form-label">
+          Body
+        </label>
         <textarea
+          id="body"
           className="form-control"
           rows="6"
           value={body}
@@ -59,8 +65,15 @@ export default function QuestionForm({ initial, onSubmit, submitting }) {
         />
       </div>
       <div>
-        <label className="form-label">Tags (comma separated)</label>
-        <input className="form-control" value={tags} onChange={(e) => setTags(e.target.value)} />
+        <label htmlFor="tags" className="form-label">
+          Tags (comma separated)
+        </label>
+        <input
+          id="tags"
+          className="form-control"
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
+        />
       </div>
 
       <div className="d-flex gap-2">

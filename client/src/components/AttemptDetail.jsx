@@ -33,10 +33,11 @@ export default function AttemptDetail({ id }) {
   const toQuestionHref = attempt.questionId ? `#/q/${attempt.questionId}` : null;
 
   return (
-    <div>
+    <div className="container">
       <a className="btn btn-cancel btn-sm mb-4" href="#/submissions">
         ← Back
       </a>
+
       <div className="text-muted small mb-3">
         {createdText}
         {mins}
@@ -44,8 +45,8 @@ export default function AttemptDetail({ id }) {
 
       <div className="card mb-4 shadow-sm border-0">
         <div className="card-body">
-          <div className="d-flex justify-content-between align-items-start">
-            <h5 className="card-title mb-0">Question</h5>
+          <div className="d-flex justify-content-between align-items-center">
+            <h2 className="card-title mb-0">Question</h2>
             {toQuestionHref && (
               <a className="btn btn-sm btn-primary" href={toQuestionHref}>
                 View on Question Page
@@ -60,7 +61,7 @@ export default function AttemptDetail({ id }) {
         </div>
       </div>
 
-      <h5>Your Submission</h5>
+      <h3>Your Submission</h3>
       <div className="card shadow-sm border-0">
         <div className="card-body">
           <pre className="mb-0" style={{ whiteSpace: 'pre-wrap' }}>
