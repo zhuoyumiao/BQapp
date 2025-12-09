@@ -142,7 +142,7 @@ export default function UserDetail({ id }) {
 
           <div className="mb-3">
             <label className="form-label">Email</label>
-            <input className="form-control" value={form.email} onChange={onChange('email')} />
+            <input type="email" className="form-control" value={form.email} onChange={onChange('email')} />
           </div>
 
           <div className="mb-3">
