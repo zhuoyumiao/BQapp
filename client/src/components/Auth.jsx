@@ -66,7 +66,7 @@ export default function Auth({ onLogin }) {
   return (
     <div className="mx-auto" style={{ maxWidth: 920 }}>
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Login / Register</h2>
+        <h3>Login / Register</h3>
       </div>
 
       <ul className="nav nav-tabs mb-3">

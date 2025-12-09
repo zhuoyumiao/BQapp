@@ -9,9 +9,9 @@ export default function QuestionCard({ item }) {
   return (
     <div className="card q-card mb-3 shadow-sm">
       <div className="card-body">
-        <h5 className="card-title">
+        <h4 className="card-title">
           <a href={`#/q/${item._id}`}>{item.title}</a>
-        </h5>
+        </h4>
         <div className="text-muted small mb-3">
           Tags: {Array.isArray(item.tags) ? item.tags.join(', ') : String(item.tags || '')}
           {' · '}

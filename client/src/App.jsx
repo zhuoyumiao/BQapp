@@ -43,9 +43,9 @@ export default function App() {
     <div className="container py-4">
       <header className="mb-4 border-bottom pb-3">
         <div className="d-flex align-items-center gap-3">
-          <h1 className="h3 mb-0 site-title">
+          <h2 className="h3 mb-0 site-title">
             <a href="#/">Behavioral Questions</a>
-          </h1>
+          </h2>
           <a className="btn btn-sm btn-primary" href="#/">
             Home
           </a>

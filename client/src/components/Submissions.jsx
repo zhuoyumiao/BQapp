@@ -27,7 +27,7 @@ export default function Submissions() {
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between mb-3">
-        <h2>My Submissions</h2>
+        <h3>My Submissions</h3>
       </div>
 
       <div className="text-muted mb-3">
