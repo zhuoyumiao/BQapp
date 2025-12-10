@@ -13,7 +13,7 @@ export default function Comparison() {
   if (!payload || !payload.question) {
     return (
       <div>
-        <h2>Comparison</h2>
+        <h3>Comparison</h3>
         <div className="alert alert-warning">
           No comparison data found. Start a practice session first.
         </div>
@@ -31,11 +31,11 @@ export default function Comparison() {
       <a className="btn btn-sm btn-cancel mb-4" href="#/practice">
         ← Back
       </a>
-      <h2 className="mb-3">Comparison</h2>
+      <h3 className="mb-3">Comparison</h3>
 
       <div className="card mb-3">
         <div className="card-body">
-          <h5 className="card-title">{question.title}</h5>
+          <h4 className="card-title">{question.title}</h4>
           <p className="card-text">{question.body}</p>
         </div>
       </div>

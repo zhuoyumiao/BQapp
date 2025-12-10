@@ -69,25 +69,6 @@ export default function Auth({ onLogin }) {
         <h3>Login / Register</h3>
       </div>
 
-      <ul className="nav nav-tabs mb-3">
-        <li className="nav-item">
-          <button
-            className={`nav-link ${mode === 'login' ? 'active' : ''}`}
-            onClick={() => setMode('login')}
-          >
-            Login
-          </button>
-        </li>
-        <li className="nav-item">
-          <button
-            className={`nav-link ${mode === 'register' ? 'active' : ''}`}
-            onClick={() => setMode('register')}
-          >
-            Register
-          </button>
-        </li>
-      </ul>
-
       {error && <div className="alert alert-danger mt-2">{error}</div>}
 
       <div className="row">
@@ -95,11 +76,12 @@ export default function Auth({ onLogin }) {
           {mode === 'login' && (
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Login</h5>
+                <h4 className="card-title">Login</h4>
                 <form onSubmit={handleLogin}>
                   <div className="mb-3">
-                    <label className="form-label">Email</label>
+                    <label htmlFor="login-email" className="form-label">Email</label>
                     <input
+                      id="login-email"
                       className="form-control"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -108,8 +90,9 @@ export default function Auth({ onLogin }) {
                     />
                   </div>
                   <div className="mb-3">
-                    <label className="form-label">Password</label>
+                    <label htmlFor="login-password" className="form-label">Password</label>
                     <input
+                      id="login-password"
                       className="form-control"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -137,11 +120,12 @@ export default function Auth({ onLogin }) {
           {mode === 'register' && (
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Register</h5>
+                <h4 className="card-title">Register</h4>
                 <form onSubmit={handleRegister}>
                   <div className="mb-3">
-                    <label className="form-label">Name</label>
+                    <label htmlFor="reg-name" className="form-label">Name</label>
                     <input
+                      id="reg-name"
                       className="form-control"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -150,8 +134,9 @@ export default function Auth({ onLogin }) {
                     />
                   </div>
                   <div className="mb-3">
-                    <label className="form-label">Email</label>
+                    <label htmlFor="reg-email" className="form-label">Email</label>
                     <input
+                      id="reg-email"
                       className="form-control"
                       value={regEmail}
                       onChange={(e) => setRegEmail(e.target.value)}
@@ -160,8 +145,9 @@ export default function Auth({ onLogin }) {
                     />
                   </div>
                   <div className="mb-3">
-                    <label className="form-label">Password</label>
+                    <label htmlFor="reg-password" className="form-label">Password</label>
                     <input
+                      id="reg-password"
                       className="form-control"
                       value={regPassword}
                       onChange={(e) => setRegPassword(e.target.value)}
